@@ -34,125 +34,125 @@
 // setup & teardown
 static int setup(void)
 {
-	remove_file_if_exists(OUTFILE);
-	remove_file_if_exists(ERRFILE);
-	remove_file_if_exists(EMPTYFILE);
-	remove_file_if_exists(NONEMPTYFILE);
-	remove_file_if_exists(NONEMPTYFILE_NONLEND);
-	// do nothing
-	return 0; // success
+    remove_file_if_exists(OUTFILE);
+    remove_file_if_exists(ERRFILE);
+    remove_file_if_exists(EMPTYFILE);
+    remove_file_if_exists(NONEMPTYFILE);
+    remove_file_if_exists(NONEMPTYFILE_NONLEND);
+    // do nothing
+    return 0; // success
 }
 static int teardown(void)
 {
-	// do nothing
-	return 0; // success
+    // do nothing
+    return 0; // success
 }
 
 
 // tests
 static void test_remove_file_that_exists(void)
 {
-	// ** arrange **
+    // ** arrange **
 
-	// create a file
-	FILE *file = fopen(OUTFILE, "w");
-	CU_ASSERT_PTR_NOT_NULL(file);
-	CU_ASSERT_EQUAL(fclose(file), 0);
-	errno = 0;
+    // create a file
+    FILE *file = fopen(OUTFILE, "w");
+    CU_ASSERT_PTR_NOT_NULL(file);
+    CU_ASSERT_EQUAL(fclose(file), 0);
+    errno = 0;
 
-	// ** act **
-	remove_file_if_exists(OUTFILE);
+    // ** act **
+    remove_file_if_exists(OUTFILE);
 
-	// ** assert **
+    // ** assert **
 
-	// make sure the file is removed
-	CU_ASSERT_EQUAL(errno, 0);
-	file = fopen(OUTFILE, "r");
-	CU_ASSERT_TRUE(!file && errno == ENOENT);
-	// cleanup gracefully
-	if (file) CU_ASSERT_EQUAL(fclose(file), 0);
-	errno = 0;
+    // make sure the file is removed
+    CU_ASSERT_EQUAL(errno, 0);
+    file = fopen(OUTFILE, "r");
+    CU_ASSERT_TRUE(!file && errno == ENOENT);
+    // cleanup gracefully
+    if (file) CU_ASSERT_EQUAL(fclose(file), 0);
+    errno = 0;
 }
 static void test_remove_file_that_does_not_exist(void)
 {
-	// ** arrange **
-	remove_file_if_exists(OUTFILE);
-	// the file is now supposed to not exist any more --> see test_remove_file_that_exists test result
+    // ** arrange **
+    remove_file_if_exists(OUTFILE);
+    // the file is now supposed to not exist any more --> see test_remove_file_that_exists test result
 
-	// ** act **
+    // ** act **
 
-	// call with a not existing file
-	remove_file_if_exists(OUTFILE);
-	// must not fail in any internal assertion
-	
-	// ** assert **
+    // call with a not existing file
+    remove_file_if_exists(OUTFILE);
+    // must not fail in any internal assertion
 
-	// make sure the file is removed
-	CU_ASSERT_EQUAL(errno, 0);
-	FILE *file = fopen(OUTFILE, "r");
-	CU_ASSERT_TRUE(!file && errno == ENOENT);
-	// cleanup gracefully
-	if (file) CU_ASSERT_EQUAL(fclose(file), 0);
-	errno = 0;
+    // ** assert **
+
+    // make sure the file is removed
+    CU_ASSERT_EQUAL(errno, 0);
+    FILE *file = fopen(OUTFILE, "r");
+    CU_ASSERT_TRUE(!file && errno == ENOENT);
+    // cleanup gracefully
+    if (file) CU_ASSERT_EQUAL(fclose(file), 0);
+    errno = 0;
 }
 
 static void test_assert_lines_empty_file(void)
 {
-	// ** arrange **
+    // ** arrange **
 
-	// empty file
-	remove_file_if_exists(EMPTYFILE);
-	FILE *file = fopen(EMPTYFILE, "w");
-	CU_ASSERT_PTR_NOT_NULL_FATAL(file);
-	CU_ASSERT_EQUAL(fclose(file), 0);
-	const char *lines[] = {};
+    // empty file
+    remove_file_if_exists(EMPTYFILE);
+    FILE *file = fopen(EMPTYFILE, "w");
+    CU_ASSERT_PTR_NOT_NULL_FATAL(file);
+    CU_ASSERT_EQUAL(fclose(file), 0);
+    const char *lines[] = {};
 
-	// ** act **
-	assert_lines(EMPTYFILE, lines, sizeof(lines)/sizeof(*lines));
-	
-	// ** assert **
+    // ** act **
+    assert_lines(EMPTYFILE, lines, sizeof(lines)/sizeof(*lines));
 
-	// no assertions should have happened within assert_lines(...)
+    // ** assert **
+
+    // no assertions should have happened within assert_lines(...)
 }
 static void test_assert_lines_non_empty_file(void)
 {
-	// ** arrange **
+    // ** arrange **
 
-	// reference file
-	remove_file_if_exists(NONEMPTYFILE);
-	FILE *file = fopen(NONEMPTYFILE, "w");
-	CU_ASSERT_PTR_NOT_NULL_FATAL(file);
-	CU_ASSERT_EQUAL(fprintf(file, "LINE1\n"), 6);
-	CU_ASSERT_EQUAL(fprintf(file, "LINE2\n"), 6);
-	CU_ASSERT_EQUAL(fclose(file), 0);
-	const char *lines[] = { "LINE1\n", "LINE2\n"};
+    // reference file
+    remove_file_if_exists(NONEMPTYFILE);
+    FILE *file = fopen(NONEMPTYFILE, "w");
+    CU_ASSERT_PTR_NOT_NULL_FATAL(file);
+    CU_ASSERT_EQUAL(fprintf(file, "LINE1\n"), 6);
+    CU_ASSERT_EQUAL(fprintf(file, "LINE2\n"), 6);
+    CU_ASSERT_EQUAL(fclose(file), 0);
+    const char *lines[] = { "LINE1\n", "LINE2\n"};
 
-	// ** act **
-	assert_lines(NONEMPTYFILE, lines, sizeof(lines)/sizeof(*lines));
-	
-	// ** assert **
+    // ** act **
+    assert_lines(NONEMPTYFILE, lines, sizeof(lines)/sizeof(*lines));
 
-	// no assertions should have happened within assert_lines(...)
+    // ** assert **
+
+    // no assertions should have happened within assert_lines(...)
 }
 static void test_assert_lines_no_newline_at_the_end(void)
 {
-	// ** arrange **
+    // ** arrange **
 
-	// reference file
-	remove_file_if_exists(NONEMPTYFILE_NONLEND);
-	FILE *file = fopen(NONEMPTYFILE_NONLEND, "w");
-	CU_ASSERT_PTR_NOT_NULL_FATAL(file);
-	CU_ASSERT_EQUAL(fprintf(file, "LINE1\n"), 6);
-	CU_ASSERT_EQUAL(fprintf(file, "LINE2"), 5);
-	CU_ASSERT_EQUAL(fclose(file), 0);
-	const char *lines[] = { "LINE1\n", "LINE2"};
+    // reference file
+    remove_file_if_exists(NONEMPTYFILE_NONLEND);
+    FILE *file = fopen(NONEMPTYFILE_NONLEND, "w");
+    CU_ASSERT_PTR_NOT_NULL_FATAL(file);
+    CU_ASSERT_EQUAL(fprintf(file, "LINE1\n"), 6);
+    CU_ASSERT_EQUAL(fprintf(file, "LINE2"), 5);
+    CU_ASSERT_EQUAL(fclose(file), 0);
+    const char *lines[] = { "LINE1\n", "LINE2"};
 
-	// ** act **
-	assert_lines(NONEMPTYFILE_NONLEND, lines, sizeof(lines)/sizeof(*lines));
-	
-	// ** assert **
+    // ** act **
+    assert_lines(NONEMPTYFILE_NONLEND, lines, sizeof(lines)/sizeof(*lines));
 
-	// no assertions should have happened within assert_lines(...)
+    // ** assert **
+
+    // no assertions should have happened within assert_lines(...)
 }
 
 /**
@@ -160,11 +160,11 @@ static void test_assert_lines_no_newline_at_the_end(void)
  */
 int main(void)
 {
-	TestMainBasic("PROGC Test Lib", setup, teardown
-				  , test_remove_file_that_exists
-				  , test_remove_file_that_does_not_exist
-				  , test_assert_lines_empty_file
-				  , test_assert_lines_non_empty_file
-				  , test_assert_lines_no_newline_at_the_end
-				  );
+    TestMainBasic("PROGC Test Lib", setup, teardown
+                  , test_remove_file_that_exists
+                  , test_remove_file_that_does_not_exist
+                  , test_assert_lines_empty_file
+                  , test_assert_lines_non_empty_file
+                  , test_assert_lines_no_newline_at_the_end
+                  );
 }

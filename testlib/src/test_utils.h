@@ -109,38 +109,38 @@ typedef void (*test_function_t)(void);
  * }
  * @endcode
  */
-#define TestMainBasic(suite, setup, cleanup, ...)						\
-	do {																\
-        CU_pSuite pSuite = NULL;										\
-																		\
-		/* initialize the CUnit test registry */						\
-		if (CUE_SUCCESS != CU_initialize_registry())					\
-			return CU_get_error();										\
-																		\
-		/* functions and their names */									\
-		test_function_t tests[] = { __VA_ARGS__ };						\
-		char all_names[] = #__VA_ARGS__;								\
-		const size_t n = sizeof(tests)/sizeof(*tests);					\
-		const char *names[sizeof(tests)/sizeof(*tests)] = { strtok(all_names, ", ") } ;	\
-		for(size_t i = 1; i < n; i++) {									\
-		    names[i] = strtok(NULL, ", ");								\
-		}																\
-		/* init suite and tests */										\
-		pSuite = CU_add_suite(suite, setup, cleanup);					\
-		if (pSuite) {													\
-			size_t i;													\
-			for(i = 0; i < n; i++) {									\
-				if (!CU_add_test(pSuite, names[i], tests[i])) break;	\
-			}															\
-			/* Run all tests using the CUnit Basic interface */			\
-			if (i == n) {												\
-				CU_basic_set_mode(CU_BRM_VERBOSE);						\
-				CU_basic_run_tests();									\
-			}															\
-		}																\
-		CU_cleanup_registry();											\
-		return CU_get_error();											\
-	} while(0)															\
+#define TestMainBasic(suite, setup, cleanup, ...)                       \
+    do {                                                                \
+        CU_pSuite pSuite = NULL;                                        \
+                                                                        \
+        /* initialize the CUnit test registry */                        \
+        if (CUE_SUCCESS != CU_initialize_registry())                    \
+            return CU_get_error();                                      \
+                                                                        \
+        /* functions and their names */                                 \
+        test_function_t tests[] = { __VA_ARGS__ };                      \
+        char all_names[] = #__VA_ARGS__;                                \
+        const size_t n = sizeof(tests)/sizeof(*tests);                  \
+        const char *names[sizeof(tests)/sizeof(*tests)] = { strtok(all_names, ", ") } ; \
+        for(size_t i = 1; i < n; i++) {                                 \
+            names[i] = strtok(NULL, ", ");                              \
+        }                                                               \
+        /* init suite and tests */                                      \
+        pSuite = CU_add_suite(suite, setup, cleanup);                   \
+        if (pSuite) {                                                   \
+            size_t i;                                                   \
+            for(i = 0; i < n; i++) {                                    \
+                if (!CU_add_test(pSuite, names[i], tests[i])) break;    \
+            }                                                           \
+            /* Run all tests using the CUnit Basic interface */         \
+            if (i == n) {                                               \
+                CU_basic_set_mode(CU_BRM_VERBOSE);                      \
+                CU_basic_run_tests();                                   \
+            }                                                           \
+        }                                                               \
+        CU_cleanup_registry();                                          \
+        return CU_get_error();                                          \
+    } while(0)                                                          \
 
 
 #endif
