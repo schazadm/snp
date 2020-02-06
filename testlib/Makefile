@@ -59,10 +59,6 @@ install: $(FULLTARGET)
 	cp -f $(HEADERS) $(INSTALLINCDIR)/
 	@echo "#### $< installed ####"
 
-doc:
-	doxygen ../Doxyfile > /dev/null
-	@echo "#### $@ done ####"
-
 test: $(TSTTARGET)
 	(cd tests; $(TSTTARGET))
 	@echo "#### $< executed ####"
