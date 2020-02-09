@@ -9,7 +9,7 @@
  */
 /**
  * @file
- * @brief Common test utilities for writing PROGC tests.
+ * @brief Common test utilities for writing SNP tests.
  */
 #ifndef _TEST_UTILS_H_
 #define _TEST_UTILS_H_

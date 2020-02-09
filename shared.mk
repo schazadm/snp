@@ -1,17 +1,9 @@
-# what to produce
-TARGET        := lib/libsnptest.a
-
-# public headers
-HEADERS       := include/test_utils.h
-
-# implementation files
-SOURCES       := src/test_utils.c
-
-# test implementations
-TSTSOURCES    := tests/tests.c
+# minimal required settings
+SNP_TESTLIB   := $(if $(SNP_TESTLIB),$(SNP_TESTLIB),"SNP_TESTLIB-is-not-set")
+SNP_DOXYFILE  := $(if $(SNP_DOXYFILE),$(SNP_DOXYFILE),"SNP_DOXYFILE-is-not-set")
 
 # directories to create (and remove upon cleanup)
-CREATEDIRS    := lib doc
+CREATEDIRS    := bin doc
 
 # list of derived file names from the source names
 OBJECTS       := $(SOURCES:%.c=%.o)    # list of gcc -c  ... produced *.o files
@@ -20,15 +12,18 @@ TSTOBJECTS    := $(TSTSOURCES:%.c=%.o) # list of gcc -c  ... produced *.o files
 TSTDEPS       := $(TSTSOURCES:%.c=%.d) # list of gcc -MD ... produced *.d files
 TSTTARGET     := $(CURDIR)/tests/runtest
 
+# shared libs
+TSTLIBDIR := $(SNP_TESTLIB)/lib
+TSTINCDIR := $(SNP_TESTLIB)/include
+
 # full path to the target
 FULLTARGET    := $(CURDIR)/$(TARGET)
 
 # commands and flags
 CC            = gcc
 CFLAGS        = -std=c99 -Wall -pedantic -g
-CPPFLAGS      = -MD -Isrc -Itests -Iinclude -DTARGET=$(FULLTARGET)
+CPPFLAGS      = -MD -Isrc -Itests -I$(TSTINCDIR) -DTARGET=$(FULLTARGET)
 LDFLAGS       = 
-ARFLAGS       = rc
 
 # targets which get always visited (without checking any up-to-date state)
 .PHONY: default clean test doc install mkdir
@@ -38,18 +33,15 @@ default: $(FULLTARGET)
 	@echo "#### $< built ####"
 
 $(FULLTARGET): mkdir $(OBJECTS) Makefile
-	$(AR) $(ARFLAGS) $@ $(OBJECTS)
+	$(LINK.c) -o $@ $(OBJECTS)
 
 clean:
 	$(RM) $(TARGET) $(OBJECTS) $(DEPS) $(TSTTARGET) $(TSTOBJECTS) $(TSTDEPS) $(wildcard */*~ *~ tests/*.txt)
 	$(RM) -r $(CREATEDIRS)
 	@echo "#### $@ done ####"
 
-install: $(FULLTARGET)
-	@echo "#### $< installed ####"
-
 doc:
-	doxygen ../Doxyfile > /dev/null
+	doxygen $(SNP_DOXYFILE) > /dev/null
 	@echo "#### $@ done ####"
 
 test: $(TSTTARGET)
@@ -57,7 +49,7 @@ test: $(TSTTARGET)
 	@echo "#### $< executed ####"
 
 $(TSTTARGET): $(FULLTARGET) $(TSTOBJECTS)
-	$(LINK.c) -o $(TSTTARGET) $(TSTOBJECTS) $(FULLTARGET) -lcunit
+	$(LINK.c) -o $(TSTTARGET) $(TSTOBJECTS) $(FULLTARGET) -lcunit -L$(TSTLIBDIR) -lsnptest
 	@echo "#### $@ built ####"
 
 

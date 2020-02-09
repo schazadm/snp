@@ -161,7 +161,7 @@ static void test_assert_lines_no_newline_at_the_end(void)
  */
 int main(void)
 {
-	TestMainBasic("PROGC Test Lib", setup, teardown
+	TestMainBasic("SNP Test Lib", setup, teardown
 				  , test_remove_file_that_exists
 				  , test_remove_file_that_does_not_exist
 				  , test_assert_lines_empty_file
