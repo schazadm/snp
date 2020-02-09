@@ -2,10 +2,11 @@ EMPTY      :=
 SPACE      := $(EMPTY) $(EMPTY)
 NL         := $(EMPTY)\\n$(EMPTY)
 
-LABS       := $(sort $(wildcard lab??-* testlib))
+LABS       := $(sort $(wildcard P[0-9][0-9]*))
+EXAMPLE    := $(if $(firstword $(LABS)),$(firstword $(LABS)),"Pxx")
 
 default:
-	@echo "**** PROGC Labs ****"
+	@echo "**** SNP Labs ****"
 	@echo "$(subst $(SPACE),$(NL),$(LABS))"
 	@echo ""
 	@echo "**** Prerequisites ****"
@@ -20,7 +21,7 @@ default:
 	@echo ""
 	@echo "**** How to build and run a lab? ****"
 	@echo "1. Change into the respective directory, e.g."
-	@echo "       cd $(firstword $(LABS))"
+	@echo "       cd $(EXAMPLE)"
 	@echo "2. Build the lab, e.g."
 	@echo "       make"
 	@echo "   The resulting executable is located in the bin folder."
