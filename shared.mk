@@ -23,7 +23,7 @@ FULLTARGET    := $(CURDIR)/$(TARGET)
 CC            = gcc
 CFLAGS        = -std=c99 -Wall -pedantic -g
 CPPFLAGS      = -MD -Isrc -Itests -I$(TSTINCDIR) -DTARGET=$(FULLTARGET)
-LDFLAGS       = 
+LDFLAGS       = -static
 
 # targets which get always visited (without checking any up-to-date state)
 .PHONY: default clean test doc install mkdir
@@ -49,7 +49,7 @@ test: $(TSTTARGET)
 	@echo "#### $< executed ####"
 
 $(TSTTARGET): $(FULLTARGET) $(TSTOBJECTS)
-	$(LINK.c) -o $(TSTTARGET) $(TSTOBJECTS) $(FULLTARGET) -lcunit -L$(TSTLIBDIR) -lsnptest
+	$(LINK.c) -o $(TSTTARGET) $(TSTOBJECTS) -lcunit -L$(TSTLIBDIR) -lsnptest
 	@echo "#### $@ built ####"
 
 
