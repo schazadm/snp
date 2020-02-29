@@ -33,7 +33,7 @@ default: $(FULLTARGET)
 	@echo "#### $< built ####"
 
 $(FULLTARGET): mkdir $(OBJECTS) Makefile
-	$(LINK.c) -o $@ $(OBJECTS)
+	$(LINK.c) -o $@ $(OBJECTS) $(LIBS)
 
 clean:
 	$(RM) $(TARGET) $(OBJECTS) $(DEPS) $(TSTTARGET) $(TSTOBJECTS) $(TSTDEPS) $(wildcard */*~ *~ tests/*.txt)
@@ -49,7 +49,7 @@ test: $(TSTTARGET)
 	@echo "#### $< executed ####"
 
 $(TSTTARGET): $(FULLTARGET) $(TSTOBJECTS)
-	$(LINK.c) -o $(TSTTARGET) $(TSTOBJECTS) -lcunit -L$(TSTLIBDIR) -lsnptest
+	$(LINK.c) -o $(TSTTARGET) $(TSTOBJECTS) $(LIBS) -lcunit -L$(TSTLIBDIR) -lsnptest
 	@echo "#### $@ built ####"
 
 
