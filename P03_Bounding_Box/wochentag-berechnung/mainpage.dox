@@ -1,0 +1,8 @@
+/**
+ * @mainpage SNP - P03 Calculate the week day
+ *
+ * @section Purpose
+ *
+ * This is a lab to calculate the week day from a given Gregorian date.
+ *
+ */
