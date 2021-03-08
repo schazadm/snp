@@ -111,7 +111,7 @@ int main(int argc, const char *argv[])
     // END-STUDENTS-TO-ADD-CODE
 
     
-    // TASK2: calculate the weekday and print it in this format: "%04d-%02d-%02d is a %s\n"
+    // TASK2: calculate the weekday and print it in this format: YYYY-MM-DD is a Ddd\n, e.g. 2021-03-08 is a Mon\n
     // BEGIN-STUDENTS-TO-ADD-CODE
 
 
