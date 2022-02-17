@@ -1,0 +1,122 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Table of contents}{i}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}01 \sphinxhyphen {} Erste Schritte mit C}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}1. Übersicht}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}2. Lernziele}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}3. Aufgabe 1: virtuelle Maschine}{1}{section.1.3}%
+\contentsline {section}{\numberline {1.4}4. Aufgabe 2: Hello World}{2}{section.1.4}%
+\contentsline {section}{\numberline {1.5}5. Aufgabe 3: Tabellenausgabe}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.6}6. Aufgabe 4: Zeichen und Wörter zählen}{3}{section.1.6}%
+\contentsline {section}{\numberline {1.7}7. Bewertung}{3}{section.1.7}%
+\contentsline {chapter}{\numberline {2}02: Funktionen, Datentyp “enum”}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}1. Übersicht}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}2. Lernziele}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}3. Aufgaben}{5}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}3.1 Aufgabe 1 Tage pro Monat}{6}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}3.2 Aufgabe 2 Bestimmen des Wochentags}{7}{subsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.2.1}3.2.1 Teilaufgabe Argumente Parsen und auf Korrektheit prüfen}{7}{subsubsection.2.3.2.1}%
+\contentsline {paragraph}{3.2.1.1 Argument Format}{7}{paragraph*.3}%
+\contentsline {paragraph}{3.2.1.2 Korrektes Datum}{7}{paragraph*.4}%
+\contentsline {paragraph}{3.2.1.3 Vorgaben an die Umsetzung}{7}{paragraph*.5}%
+\contentsline {paragraph}{3.2.1.4 Hinweise}{8}{paragraph*.6}%
+\contentsline {subsubsection}{\numberline {2.3.2.2}3.2.2 Teilaufgabe Wochentag Berechnung}{8}{subsubsection.2.3.2.2}%
+\contentsline {section}{\numberline {2.4}4. Bewertung}{8}{section.2.4}%
+\contentsline {section}{\numberline {2.5}5. Anhang}{9}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}5.1 Sprach Element}{9}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}5.2 Beschreibung}{9}{subsection.2.5.2}%
+\contentsline {chapter}{\numberline {3}03 \sphinxhyphen {} Bit Operationen, Struct, Typedef}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}1. Bit Operationen}{10}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}1.1 Übungen}{11}{subsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.1.1}1. Basis Operationen}{11}{subsubsection.3.1.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.1.2}2. Variablen tauschen (ohne Dritt\sphinxhyphen {}Variable)}{11}{subsubsection.3.1.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.1.3}3. Lower\sphinxhyphen {} / Uppercase}{12}{subsubsection.3.1.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.1.4}4. Prüfen auf 2\sphinxhyphen {}er Potenz}{12}{subsubsection.3.1.1.4}%
+\contentsline {section}{\numberline {3.2}2. Struct \& typedef}{13}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}2.1 Übungen}{13}{subsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}1. Bit Operationen Rechner}{13}{subsubsection.3.2.1.1}%
+\contentsline {chapter}{\numberline {4}04 \sphinxhyphen {} Modularisieren von C Code}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}1. Übersicht}{14}{section.4.1}%
+\contentsline {section}{\numberline {4.2}2. Lernziele}{14}{section.4.2}%
+\contentsline {section}{\numberline {4.3}3. Aufgabe 1: Modularisieren}{15}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}3.1 Teilaufgabe Modules einbinden, Header Files schreiben}{15}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}4. Aufgabe 2: Makefile Regeln}{16}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}4.1 Neue Regeln hinzufügen}{16}{subsection.4.4.1}%
+\contentsline {section}{\numberline {4.5}5. Aufgabe 3}{16}{section.4.5}%
+\contentsline {section}{\numberline {4.6}6. Bewertung}{16}{section.4.6}%
+\contentsline {section}{\numberline {4.7}7. Erweiterung Doxyfile für Abhängigkeitsanalyse}{16}{section.4.7}%
+\contentsline {chapter}{\numberline {5}05 \sphinxhyphen {} Arrays/Strings/TicTacToe}{18}{chapter.5}%
+\contentsline {section}{\numberline {5.1}1. Übersicht}{18}{section.5.1}%
+\contentsline {section}{\numberline {5.2}2. Lernziele}{18}{section.5.2}%
+\contentsline {section}{\numberline {5.3}3. Aufgabe 1: Sortieren von Strings}{18}{section.5.3}%
+\contentsline {section}{\numberline {5.4}4. Aufgabe 2: TicTacToe}{19}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}4.1 Teilaufgabe test\_model\_init}{20}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}4.2 Teilaufgabe test\_model\_get\_state und test\_model\_get\_winner}{21}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}4.3 Teilaufgabe test\_model\_can\_move}{22}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}4.4 Teilaufgabe test\_model\_move und test\_model\_get\_win\_line}{22}{subsection.5.4.4}%
+\contentsline {section}{\numberline {5.5}5. Bewertung}{23}{section.5.5}%
+\contentsline {chapter}{\numberline {6}06 \sphinxhyphen {} Personen Verwaltung \textendash {} Linked List}{24}{chapter.6}%
+\contentsline {section}{\numberline {6.1}1. Übersicht}{24}{section.6.1}%
+\contentsline {section}{\numberline {6.2}2. Lernziele}{25}{section.6.2}%
+\contentsline {section}{\numberline {6.3}3. Personenverwaltung}{25}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}3.1 Programmfunktion}{25}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}3.2 Designvorgaben}{25}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}3.3 Bestehender Programmrahmen}{28}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}4. Aufgabe 1: Modularisierung \textendash {} API und Implementation main.c}{28}{section.6.4}%
+\contentsline {section}{\numberline {6.5}5. Aufgabe 2: Implementierung von person.c und list.c}{29}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}5.1 Teilaufgabe: Implementierung von person.c}{29}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}5.2 Teilaufgabe: Implementierung von list.c}{29}{subsection.6.5.2}%
+\contentsline {section}{\numberline {6.6}6. Aufgabe 3: Unit Tests}{29}{section.6.6}%
+\contentsline {section}{\numberline {6.7}7. Bewertung}{29}{section.6.7}%
+\contentsline {chapter}{\numberline {7}07 \sphinxhyphen {} Prozesse und Threads}{31}{chapter.7}%
+\contentsline {section}{\numberline {7.1}1. Übersicht}{32}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}1.1 Nachweis}{32}{subsection.7.1.1}%
+\contentsline {section}{\numberline {7.2}2. Lernziele}{32}{section.7.2}%
+\contentsline {section}{\numberline {7.3}3. Aufgaben}{32}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}3.1 Aufgabe 1: Prozess mit fork() erzeugen}{33}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}3.2 Aufgabe 2: Prozess mit fork() und exec(): Programm Image ersetzen}{33}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}3.3 Aufgabe 3: Prozesshierarchie analysieren}{33}{subsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.3.4}3.4 Aufgabe 4: Zeitlicher Ablauf von Prozessen}{34}{subsection.7.3.4}%
+\contentsline {subsection}{\numberline {7.3.5}3.5 Aufgabe 5: Waisenkinder (Orphan Processes)}{34}{subsection.7.3.5}%
+\contentsline {subsection}{\numberline {7.3.6}3.6 Aufgabe 6: Terminierte, halbtote Prozesse (Zombies)}{34}{subsection.7.3.6}%
+\contentsline {subsection}{\numberline {7.3.7}3.7 Aufgabe 7: Auf Terminieren von Kindprozessen warten}{35}{subsection.7.3.7}%
+\contentsline {subsection}{\numberline {7.3.8}3.8 Aufgabe 8: Kindprozess als Kopie des Elternprozesses}{36}{subsection.7.3.8}%
+\contentsline {subsection}{\numberline {7.3.9}3.9 Aufgabe 9: Unterschied von Threads gegenüber Prozessen}{36}{subsection.7.3.9}%
+\contentsline {subsection}{\numberline {7.3.10}3.10 Aufgabe 10 (optional):}{37}{subsection.7.3.10}%
+\contentsline {subsubsection}{\numberline {7.3.10.1}3.10.1 Übersicht}{37}{subsubsection.7.3.10.1}%
+\contentsline {paragraph}{3.10.1.1 Nachweis}{37}{paragraph*.7}%
+\contentsline {subsubsection}{\numberline {7.3.10.2}3.10.2 Lernziele}{37}{subsubsection.7.3.10.2}%
+\contentsline {subsubsection}{\numberline {7.3.10.3}3.10.3 Aufgabe: Dämon Prozesse}{37}{subsubsection.7.3.10.3}%
+\contentsline {subsubsection}{\numberline {7.3.10.4}3.10.4 Zusatzinformationen}{38}{subsubsection.7.3.10.4}%
+\contentsline {paragraph}{3.10.4.1 Diese Implementation}{38}{paragraph*.8}%
+\contentsline {paragraph}{3.10.4.2 Zusatzinformation zu Dämon Prozessen}{39}{paragraph*.9}%
+\contentsline {section}{\numberline {7.4}4. Bewertung}{39}{section.7.4}%
+\contentsline {chapter}{\numberline {8}08 \sphinxhyphen {} Synchronisationsprobleme}{41}{chapter.8}%
+\contentsline {section}{\numberline {8.1}1. Übersicht}{41}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}1.1 Nachweis}{42}{subsection.8.1.1}%
+\contentsline {section}{\numberline {8.2}2. Lernziele}{42}{section.8.2}%
+\contentsline {section}{\numberline {8.3}3. Einführung}{42}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}3.1 Wie löst man Synchronisationsprobleme?}{42}{subsection.8.3.1}%
+\contentsline {section}{\numberline {8.4}4. Der Kaffee\sphinxhyphen {}Automat}{43}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}4.1 Aufgabe: Mutual Exclusion}{44}{subsection.8.4.1}%
+\contentsline {subsubsection}{\numberline {8.4.1.1}Aufgaben}{44}{subsubsection.8.4.1.1}%
+\contentsline {subsection}{\numberline {8.4.2}4.2 Aufgabe: Einfache Reihenfolge}{44}{subsection.8.4.2}%
+\contentsline {subsubsection}{\numberline {8.4.2.1}Aufgaben}{45}{subsubsection.8.4.2.1}%
+\contentsline {subsection}{\numberline {8.4.3}4.3 Aufgabe: Erweiterte Reihenfolge}{45}{subsection.8.4.3}%
+\contentsline {subsubsection}{\numberline {8.4.3.1}Aufgabe}{45}{subsubsection.8.4.3.1}%
+\contentsline {subsection}{\numberline {8.4.4}4.4 Zusammenfassung}{45}{subsection.8.4.4}%
+\contentsline {section}{\numberline {8.5}5. International Banking}{46}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}5.1 Implementation}{46}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}5.2 Aufgabe: Konto Synchronisation}{46}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}5.3 Aufgabe: Filialen Zugriff in Critical Section}{46}{subsection.8.5.3}%
+\contentsline {subsection}{\numberline {8.5.4}5.4 Aufgabe: Refactoring der Synchronisation}{46}{subsection.8.5.4}%
+\contentsline {section}{\numberline {8.6}6. Bewertung}{47}{section.8.6}%
+\contentsline {chapter}{\numberline {9}09 \sphinxhyphen {} File Operations}{48}{chapter.9}%
+\contentsline {section}{\numberline {9.1}1. Übersicht}{48}{section.9.1}%
+\contentsline {section}{\numberline {9.2}2. Lernziele}{48}{section.9.2}%
+\contentsline {section}{\numberline {9.3}3. Aufgabe 1:}{48}{section.9.3}%
+\contentsline {section}{\numberline {9.4}4. Bewertung}{48}{section.9.4}%
+\contentsline {chapter}{\numberline {10}10 \sphinxhyphen {} IPC}{49}{chapter.10}%
+\contentsline {section}{\numberline {10.1}1. Übersicht}{49}{section.10.1}%
+\contentsline {section}{\numberline {10.2}2. Lernziele}{49}{section.10.2}%
+\contentsline {section}{\numberline {10.3}3. Aufgabe 1:}{49}{section.10.3}%
+\contentsline {section}{\numberline {10.4}4. Bewertung}{49}{section.10.4}%
