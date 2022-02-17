@@ -1,0 +1,76 @@
+digraph ProcessHierarchie {
+
+  P1[label="P01\nfork()"];
+
+  P11[label="P01\nfork()"];
+  P12[label="P02\nfork()"];
+
+  P111[label="P01\nfork()"];
+  P112[label="P03\nfork()"];
+  P121[label="P02\nfork()"];
+  P122[label="P04\nfork()"];
+
+  P1111[label="P01\nfork()"];
+  P1112[label="P05\nfork()"];
+  P1121[label="P03\nfork()"];
+  P1122[label="P06\nfork()"];
+  P1211[label="P02\nfork()"];
+  P1212[label="P07\nfork()"];
+  P1221[label="P04\nfork()"];
+  P1222[label="P08\nfork()"];
+
+  P11111[label="P01"];
+  P11112[label="P09"];
+  P11121[label="P05"];
+  P11122[label="P10"];
+  P11211[label="P03"];
+  P11212[label="P11"];
+  P11221[label="P06"];
+  P11222[label="P12"];
+  P12111[label="P02"];
+  P12112[label="P13"];
+  P12121[label="P07"];
+  P12122[label="P14"];
+  P12211[label="P04"];
+  P12212[label="P15"];
+  P12221[label="P08"];
+  P12222[label="P16"];
+
+  P1 -> P11
+  P1 -> P12
+
+  P11 -> P111
+  P11 -> P112
+  P12 -> P121
+  P12 -> P122
+
+  P111 -> P1111
+  P111 -> P1112
+  P112 -> P1121
+  P112 -> P1122
+  P121 -> P1211
+  P121 -> P1212
+  P122 -> P1221
+  P122 -> P1222
+
+  P1111 -> P11111
+  P1111 -> P11112
+  P1112 -> P11121
+  P1112 -> P11122
+  P1121 -> P11211
+  P1121 -> P11212
+  P1122 -> P11221
+  P1122 -> P11222
+  P1211 -> P12111
+  P1211 -> P12112
+  P1212 -> P12121
+  P1212 -> P12122
+  P1221 -> P12211
+  P1221 -> P12212
+  P1222 -> P12221
+  P1222 -> P12222
+
+  { rank="same"; P11; P12; }
+#  { rank="same"; P1; P11; P111; P1111; P11111; }
+
+}

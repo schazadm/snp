@@ -1,10 +1,8 @@
-# SNP - Laboratory Planning
+# SNP - Praktika
 <img align="right" title="zhaw.ch" width="176" height="92" src="en-zhaw-ines-rgb.png">
 
-### Description
-TODO
 
-### Views
-[Github-Pages](https://github.zhaw.ch/pages/SNP/snp/)
+### Übersicht
+[Online Beschreibungen der Praktika und Aufgaben](https://github.zhaw.ch/pages/SNP/snp-lab-code/)
 
-[.pdf](https://github.zhaw.ch/SNP/snp-lab-code/blob/master/main.pdf)
+[Praktika.pdf](https://github.zhaw.ch/SNP/snp-lab-code/blob/master/build/latex/main.pdf)
