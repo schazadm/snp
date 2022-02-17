@@ -4,4 +4,4 @@
 ### Übersicht
 [Beschreibungen der Praktika und Aufgaben](https://github.zhaw.ch/pages/SNP/snp/)
 
-[.pdf](https://github.zhaw.ch/SNP/snp-lab-code/blob/master/main.pdf)
+[Praktika.pdf](https://github.zhaw.ch/SNP/snp-lab-code/blob/master/main.pdf)
