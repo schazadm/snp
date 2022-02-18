@@ -7,7 +7,7 @@ In diesem Praktikum erstellen Sie mehrere kleine C-Programme, in denen Sie Input
 
 Arbeiten Sie in Zweiergruppen und diskutieren Sie ihre Lösungsansätze miteinander, bevor Sie diese umsetzen.
 
-Bevor Sie mit den Programmieraufgaben beginnen, setzen Sie eine virtuelle Maschine mit der vorbereiteten Praktikumsumgebung auf.
+Bevor Sie mit den Programmieraufgaben beginnen, setzen Sie eine virtuelle Maschine mit der vorbereiteten Praktikumsumgebung auf. Die entsprechende Anleitung finden Sie hier: [https://github.zhaw.ch/SNP/snp-lab-env/blob/master/docs/Arbeitsumgebung_f%C3%BCr_die_Praktika.pdf](https://github.zhaw.ch/SNP/snp-lab-env/blob/master/docs/Arbeitsumgebung_f%C3%BCr_die_Praktika.pdf).
 
 ___
 ## 2. Lernziele
