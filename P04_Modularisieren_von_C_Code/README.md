@@ -311,7 +311,7 @@ Prüfen Sie schliesslich die Umsetzung Aufgabe mittels `make dep-clean
 dep && firefox src/*.png.`
 
 
-### 4.1	Neue Regeln hinzufügen
+### 4.1 Neue Regeln hinzufügen
 
 
 Führen Sie im `Makefile` an den angegebenen Stellen folgende
@@ -336,12 +336,16 @@ Ergänzungen durch
 
 Die Umsetzung der obigen Änderungen sind erfolgreich, wenn Sie
 folgende Shell Command Line erfolgreich ausführen können und in
-Firefox die Abhängigkeiten der C-Files von den Inclu-de Files
+Firefox die Abhängigkeiten der C-Files von den Include Files
 dargestellt wird.
 
 `make dep-clean dep && firefox src/*.png.`
 
 
+### 4.2 Resultate analysieren und erklären
+
+* Analysieren Sie die in der vorherigen Aufgabe erstellten grafischen Darstellungen.
+* Erklären Sie was dargestellt wird und stellen Sie den Bezug zum zugehörigen C-Code her.
 
 
 (04_grading)=
@@ -490,7 +494,7 @@ Es gibt als Teil dieses Tool-Sets verschiedene Übersetzer. Der hier
 verwendete ist der Basis-übersetzer: `dot`.
 
 Das `dot`-File Format kennt viele Möglichkeiten die Knoten und Kanten
-eines Graphen und de-ren Anordnung anzugeben.
+eines Graphen und deren Anordnung anzugeben.
 
 Der Vorteil eines solchen Tool-Sets ist, dass man den Inhalt (den
 Graphen) einfach definieren kann und sich nicht um das komplexe
@@ -511,7 +515,7 @@ digraph G {
    }
 
    subgraph cluster_c1 {
-      label="others"; style=filled; col-or=lightgrey;
+      label="others"; style=filled; color=lightgrey;
       { B; C; rank=same; }
    }
 
@@ -519,6 +523,13 @@ digraph G {
    A -> C;
    B -> C;
 }
+```
+
+```{eval-rst}
+.. figure:: bsp_dot.png
+  :width: 210px
+  :name: bsp_dot
+  :align: center
 ```
 
 
@@ -529,4 +540,4 @@ Format. Es wird oft in Web Pages verwendet.
 
 
 ___
-Version: 15.02.2022
+Version: 22.02.2022
