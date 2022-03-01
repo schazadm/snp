@@ -102,6 +102,7 @@ latex_elements = {
         \usepackage{transparent}
         \usepackage{eso-pic}
         \usepackage{lipsum}
+	\usepackage{lmodern}
         \usepackage{footnotebackref} %% link at the footnote to go to the place of footnote in the text
         %% spacing between line
         \usepackage{setspace}
