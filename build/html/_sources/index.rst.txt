@@ -16,7 +16,7 @@ SNP Laboratories
    P01_Erste_Schritte_mit_C/README.md
    P02_Funktionen_Datentyp_enum/README.md
    P03_Bit_Operation_struct_typedef/README.md
-   P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.md
+   P04_Modularisieren_von_C_Code/new_P04/README.md
    P05_TicTacToe/README.md
    P06_Personen_Verwaltung_Linked_List/README.md
    P07_Prozesse_und_Threads/README.md
