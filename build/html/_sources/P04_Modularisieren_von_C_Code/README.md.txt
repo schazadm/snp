@@ -461,7 +461,7 @@ digraph G {
 }
 ```
 
-![](./dsp_dot.png)
+![](./bsp_dot.png)
 
 
 #### 6.2.3	png File
