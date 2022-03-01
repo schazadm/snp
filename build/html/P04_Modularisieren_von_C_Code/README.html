@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>04 - Modularisieren von C Code &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -263,7 +267,7 @@ firefox dep.png
 den Source Files zu den <code class="docutils literal notranslate"><span class="pre">png</span></code> Files ausführen.</p>
 <p>Prüfen Sie schliesslich die Umsetzung Aufgabe mittels <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dep-clean</span> <span class="pre">dep</span> <span class="pre">&amp;&amp;</span> <span class="pre">firefox</span> <span class="pre">src/*.png.</span></code></p>
 <section id="neue-regeln-hinzufugen">
-<h3>4.1	Neue Regeln hinzufügen<a class="headerlink" href="#neue-regeln-hinzufugen" title="Permalink to this headline">¶</a></h3>
+<h3>4.1 Neue Regeln hinzufügen<a class="headerlink" href="#neue-regeln-hinzufugen" title="Permalink to this headline">¶</a></h3>
 <p>Führen Sie im <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> an den angegebenen Stellen folgende
 Ergänzungen durch</p>
 <ul class="simple">
@@ -284,9 +288,16 @@ macht</p></li>
 </ul>
 <p>Die Umsetzung der obigen Änderungen sind erfolgreich, wenn Sie
 folgende Shell Command Line erfolgreich ausführen können und in
-Firefox die Abhängigkeiten der C-Files von den Inclu-de Files
+Firefox die Abhängigkeiten der C-Files von den Include Files
 dargestellt wird.</p>
 <p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dep-clean</span> <span class="pre">dep</span> <span class="pre">&amp;&amp;</span> <span class="pre">firefox</span> <span class="pre">src/*.png.</span></code></p>
+</section>
+<section id="resultate-analysieren-und-erklaren">
+<h3>4.2 Resultate analysieren und erklären<a class="headerlink" href="#resultate-analysieren-und-erklaren" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Analysieren Sie die in der vorherigen Aufgabe erstellten grafischen Darstellungen.</p></li>
+<li><p>Erklären Sie was dargestellt wird und stellen Sie den Bezug zum zugehörigen C-Code her.</p></li>
+</ul>
 </section>
 </section>
 <section id="bewertung">
@@ -329,7 +340,7 @@ dargestellt wird.</p>
 <p><strong>Beschreibung</strong></p>
 </td></tr>
 <tr><td>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;v=%d&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;v=%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 </td><td>
@@ -418,40 +429,43 @@ andere Formate übersetzt.</p>
 <p>Es gibt als Teil dieses Tool-Sets verschiedene Übersetzer. Der hier
 verwendete ist der Basis-übersetzer: <code class="docutils literal notranslate"><span class="pre">dot</span></code>.</p>
 <p>Das <code class="docutils literal notranslate"><span class="pre">dot</span></code>-File Format kennt viele Möglichkeiten die Knoten und Kanten
-eines Graphen und de-ren Anordnung anzugeben.</p>
+eines Graphen und deren Anordnung anzugeben.</p>
 <p>Der Vorteil eines solchen Tool-Sets ist, dass man den Inhalt (den
 Graphen) einfach definieren kann und sich nicht um das komplexe
 Problem der ansprechenden Visualisierung kümmern muss.</p>
 <p><strong>Beispiel File</strong> (<code class="docutils literal notranslate"><span class="pre">dot</span> <span class="pre">-Tpng</span> <span class="pre">sample.dot</span> <span class="pre">&gt;</span> <span class="pre">sample.png</span></code>)</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">digraph</span> <span class="n">G</span> <span class="p">{</span>
-   <span class="n">node</span> <span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="n">box</span><span class="p">]</span>
-   <span class="n">A</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.c&quot;</span><span class="p">];</span>
-   <span class="n">B</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.h&quot;</span><span class="p">];</span>
-   <span class="n">C</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;b.h&quot;</span><span class="p">];</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">digraph</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">node</span><span class="w"> </span><span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="n">box</span><span class="p">]</span><span class="w"></span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.c&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="n">B</span><span class="w"> </span><span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.h&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="n">C</span><span class="w"> </span><span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;b.h&quot;</span><span class="p">];</span><span class="w"></span>
 
-   <span class="n">subgraph</span> <span class="n">cluster_c0</span> <span class="p">{</span>
-      <span class="n">label</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">;</span> <span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">;</span>
-      <span class="n">A</span><span class="p">;</span>
-   <span class="p">}</span>
+<span class="w">   </span><span class="n">subgraph</span><span class="w"> </span><span class="n">cluster_c0</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-   <span class="n">subgraph</span> <span class="n">cluster_c1</span> <span class="p">{</span>
-      <span class="n">label</span><span class="o">=</span><span class="s">&quot;others&quot;</span><span class="p">;</span> <span class="n">style</span><span class="o">=</span><span class="n">filled</span><span class="p">;</span> <span class="n">col</span><span class="o">-</span><span class="n">or</span><span class="o">=</span><span class="n">lightgrey</span><span class="p">;</span>
-      <span class="p">{</span> <span class="n">B</span><span class="p">;</span> <span class="n">C</span><span class="p">;</span> <span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="p">}</span>
-   <span class="p">}</span>
+<span class="w">   </span><span class="n">subgraph</span><span class="w"> </span><span class="n">cluster_c1</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;others&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">style</span><span class="o">=</span><span class="n">filled</span><span class="p">;</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">lightgrey</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"> </span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-   <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span><span class="p">;</span>
-   <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">;</span>
-   <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">B</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<figure class="align-center" id="bsp-dot">
+<a class="reference internal image-reference" href="../_images/bsp_dot.png"><img alt="../_images/bsp_dot.png" src="../_images/bsp_dot.png" style="width: 210px;" /></a>
+</figure>
 </section>
 <section id="png-file">
 <h4>6.2.3	png File<a class="headerlink" href="#png-file" title="Permalink to this headline">¶</a></h4>
 <p>Das <code class="docutils literal notranslate"><span class="pre">png</span></code> Format ist ein verlustfrei komprimiertes Raster Graphik
 Format. Es wird oft in Web Pages verwendet.</p>
 <hr class="docutils" />
-<p>Version: 15.02.2022</p>
+<p>Version: 22.02.2022</p>
 </section>
 </section>
 </section>
@@ -485,7 +499,6 @@ Format. Es wird oft in Web Pages verwendet.</p>
 <li class="toctree-l1"><a class="reference internal" href="../P01_Erste_Schritte_mit_C/README.html">01 - Erste Schritte mit C</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P02_Funktionen_Datentyp_enum/README.html">02:  Funktionen, Datentyp “enum”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
-<li class="toctree-l1"><a class="reference internal" href="new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P06_Personen_Verwaltung_Linked_List/README.html">06 - Personen Verwaltung – Linked List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P07_Prozesse_und_Threads/README.html">07 - Prozesse und Threads</a></li>
@@ -527,7 +540,7 @@ Format. Es wird oft in Web Pages verwendet.</p>
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

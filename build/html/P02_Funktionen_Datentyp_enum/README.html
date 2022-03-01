@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>02: Funktionen, Datentyp “enum” &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -37,7 +41,7 @@
 <h1>02:  Funktionen, Datentyp “enum”<a class="headerlink" href="#funktionen-datentyp-enum" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
 <p><img alt="" src="../_images/random_number.png" /></p>
-<p>(Copyright Bild: xkcd.com)</p>
+<p>(Copyright Bild: <a class="reference external" href="http://xkcd.com">xkcd.com</a>)</p>
 <hr class="docutils" />
 <section id="ubersicht">
 <h2>1. Übersicht<a class="headerlink" href="#ubersicht" title="Permalink to this headline">¶</a></h2>
@@ -94,7 +98,7 @@ Beispiel einer Additions-Funktion:</p></li>
 <figure class="align-center" id="kalender-108-v-ardfotogalerie">
 <a class="reference internal image-reference" href="../_images/kalender-108_v-ARDFotogalerie.jpg"><img alt="../_images/kalender-108_v-ARDFotogalerie.jpg" src="../_images/kalender-108_v-ARDFotogalerie.jpg" style="width: 600px;" /></a>
 </figure>
-<p>(Copyright Bild: www.planet-wissen.de)</p>
+<p>(Copyright Bild: <a class="reference external" href="http://www.planet-wissen.de">www.planet-wissen.de</a>)</p>
 <section id="aufgabe-1-tage-pro-monat">
 <h3>3.1 Aufgabe 1 Tage pro Monat<a class="headerlink" href="#aufgabe-1-tage-pro-monat" title="Permalink to this headline">¶</a></h3>
 <p>In der ersten Aufgabe berechnen Sie die Tag pro Monat einer beliebigen Kombination Monat / Jahr.
@@ -116,7 +120,7 @@ Erweitern Sie dazu das Programm um folgende Aspekte:</p>
 <li><p>Schaltjahre sind alle Jahre, die durch 4 teilbar sind.</p></li>
 <li><p>Eine Ausnahme bilden die Jahrhunderte (1600, 1700…). Diese sind keine Schltjahre.</p></li>
 <li><p>zu den 100er gibt es ebenfalls Ausnahmen: Diese sind immer Schaltjahre, wenn sie durch 400 teilbar sind
-… also zum Beispiel 1600 ist eines, nicht jedoch 1700. Weiterführende Details finden Sie unter https://de.wikipedia.org/wiki/Gregorianischer_Kalender</p></li>
+… also zum Beispiel 1600 ist eines, nicht jedoch 1700. Weiterführende Details finden Sie unter <a class="reference external" href="https://de.wikipedia.org/wiki/Gregorianischer_Kalender">https://de.wikipedia.org/wiki/Gregorianischer_Kalender</a></p></li>
 </ul>
 <p>Gegeben ist die main Funktion des Programms. Ergänzen Sie die enum Definition und die fehlenden Funktionen:</p>
 <ul class="simple">
@@ -204,7 +208,7 @@ Die Formel wird Georg Glaeser zugeschrieben, möglicherweise angelehnt an eine F
 <figure class="align-center" id="wochentagsberechnung">
 <a class="reference internal image-reference" href="../_images/Wochentagsberechnung.jpg"><img alt="../_images/Wochentagsberechnung.jpg" src="../_images/Wochentagsberechnung.jpg" style="width: 600px;" /></a>
 </figure>
-<p>(Quelle: https://de.wikipedia.org/wiki/Wochentagsberechnung)</p>
+<p>(Quelle: <a class="reference external" href="https://de.wikipedia.org/wiki/Wochentagsberechnung">https://de.wikipedia.org/wiki/Wochentagsberechnung</a>)</p>
 <p>Hier ist eine für C abgewandelte Variante davon.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">weekday</span> <span class="o">=</span> <span class="p">((</span><span class="n">day</span> <span class="o">+</span> <span class="p">(</span><span class="mi">13</span> <span class="o">*</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">c</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
 <span class="n">alle</span> <span class="n">Zahlen</span> <span class="n">sind</span> <span class="nb">int</span> <span class="n">Werte</span> <span class="n">und</span> <span class="n">alles</span> <span class="n">basiert</span> <span class="n">auf</span> <span class="nb">int</span><span class="o">-</span><span class="n">Arithmetik</span>
@@ -219,9 +223,9 @@ Vorgaben an die Umsetzung</p>
 <ol class="arabic simple">
 <li><p>Definieren Sie einen enum Typen mit (typedef) Namen weekday_t dessen Werte die Englischen 3-Zeichen Abkürzungen der Tage sind, nämlich Sun, Mon, … Sat und stel-len Sie sicher dass die Abkürzungen für die Werte 0…6 stehen.</p></li>
 <li><p>Schreiben Sie eine Funktion weekday_t calculate_weekday(date_t date) nach der Beschreibung der obigen Formel. Das date Argument ist als gültig angenom-men, d.h. es ist ein Programmier-Fehler, wenn das Programm diese Funktion mit einem ungültigen Datum aufruft. Machen Sie dafür als erste Codezeile in der Funktion eine Zu-sicherung (assert(is_valid_date(date));)</p></li>
-<li><p>Schreiben Sie eine Funktion void print_weekday(weekday_t day), welche für jeden gülteigen Tag eine Zeile auf stdout schreibt mit den Englischen 3-Zeichen Ab-kürzungen für den Wochentag, z.B. Sonntag: Sun, Montag: Mon, etc. Wenn ein ungülti-ger Wert für day erkannt wird, soll assert(!”day is out-of-range”); aufgeru-fen werden.
+<li><p>Schreiben Sie eine Funktion void print_weekday(weekday_t day), welche für jeden gülteigen Tag eine Zeile auf stdout schreibt mit den Englischen 3-Zeichen Ab-kürzungen für den Wochentag, z.B. Sonntag: Sun, Montag: Mon, etc. Wenn ein ungülti-ger Wert für day erkannt wird, soll assert(!“day is out-of-range”); aufgeru-fen werden.
 Hinweise
-•	Für interessierte, siehe: https://de.wikipedia.org/wiki/Wochentagsberechnung</p></li>
+•	Für interessierte, siehe: <a class="reference external" href="https://de.wikipedia.org/wiki/Wochentagsberechnung">https://de.wikipedia.org/wiki/Wochentagsberechnung</a></p></li>
 </ol>
 </section>
 </section>
@@ -353,7 +357,6 @@ Schreibt formatierten Text auf den stderr Stream.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P06_Personen_Verwaltung_Linked_List/README.html">06 - Personen Verwaltung – Linked List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P07_Prozesse_und_Threads/README.html">07 - Prozesse und Threads</a></li>
@@ -397,7 +400,7 @@ Schreibt formatierten Text auf den stderr Stream.</p>
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

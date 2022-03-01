@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>09/02 - Dämon Prozesse &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -77,24 +81,24 @@
 <p>Im Abschnitt 4 finden Sie Zusatzinformationen über diese Implementation eines Dämon Prozesses plus weiterführende Informationen.</p>
 <p><strong>Aufgaben</strong></p>
 <ol class="arabic simple">
-<li><p>Für die folgende Aufgabe benötigen Sie mindestens zwei Fenster (Kommandozeilen-Konsolen). Übersetzen Sie die Programme mit <code class="docutils literal notranslate"><span class="pre">make</span></code> und starten Sie das Programm <strong>PlapperMaul</strong> in einem der Fenster. Das Programm schreibt (ca.) alle 0.5 Sekunden <em>Hallo, ich bins…. Pidi</em> plus seine Prozess-ID auf den Bildschirm. Mit dem Shell Befehl <code class="docutils literal notranslate"><span class="pre">ps</span></code> können Sie Ihre aktiven Prozesse auflisten, auch <strong>PlapperMaul</strong>. Überlegen Sie sich zuerst, was mit <strong>PlapperMaul</strong> geschieht, wenn Sie das Fenster schliessen: läuft <strong>PlapperMaul</strong> weiter? Was geschieht mit <strong>PlapperMaul</strong> wenn Sie sich ausloggen und wieder einloggen? Testen Sie Ihre Überlegungen, in dem Sie die entsprechenden Aktionen durchführen. Stimmen Ihre Überlegungen?</p></li>
+<li><p>Für die folgende Aufgabe benötigen Sie mindestens zwei Fenster (Kommandozeilen-Konsolen). Übersetzen Sie die Programme mit <code class="docutils literal notranslate"><span class="pre">make</span></code> und starten Sie das Programm <strong>PlapperMaul</strong> in einem der Fenster. Das Programm schreibt (ca.) alle 0.5 Sekunden <em>Hallo, ich bins… Pidi</em> plus seine Prozess-ID auf den Bildschirm. Mit dem Shell Befehl <code class="docutils literal notranslate"><span class="pre">ps</span></code> können Sie Ihre aktiven Prozesse auflisten, auch <strong>PlapperMaul</strong>. Überlegen Sie sich zuerst, was mit <strong>PlapperMaul</strong> geschieht, wenn Sie das Fenster schliessen: läuft <strong>PlapperMaul</strong> weiter? Was geschieht mit <strong>PlapperMaul</strong> wenn Sie sich ausloggen und wieder einloggen? Testen Sie Ihre Überlegungen, in dem Sie die entsprechenden Aktionen durchführen. Stimmen Ihre Überlegungen?</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="arabic simple" start="2">
 <li><p>Starten Sie nun das Programm bzw. den Daemon <strong>MrTimeDaemon</strong>. Stellen Sie die gleichen Überlegungen an wie mit <strong>PlapperMaul</strong> und testen Sie wiederum, ob Ihre Überlegungen stimmen. Ob <strong>MrTimeDaemon</strong> noch läuft können Sie feststellen, indem Sie die Zeit abfragen oder den Befehl <code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">ajx</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">MrTimeDaemon</span></code> eingeben: was fällt Ihnen am Output auf? Was schliessen Sie aus Ihren Beobachtungen?</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="arabic simple" start="3">
 <li><p>Starten Sie <strong>MrTimeDaemon</strong> erneut, was geschieht?</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="arabic simple" start="4">
 <li><p>Stoppen Sie nun <strong>MrTimeDaemon</strong> mit <code class="docutils literal notranslate"><span class="pre">killall</span> <span class="pre">MrTimeDaemon</span></code>.</p></li>
 <li><p>Starten Sie <strong>MrTimeDaemon</strong> und fragen Sie mit <code class="docutils literal notranslate"><span class="pre">WhatsTheTimeMr</span> <span class="pre">localhost</span></code> oder mit <code class="docutils literal notranslate"><span class="pre">WhatsTheTimeMr</span> <span class="pre">127.0.0.1</span></code> die aktuelle Zeit auf Ihrem Rechner ab.</p></li>
 </ol>
@@ -110,13 +114,13 @@ Die Firewall können Sie mit folgendem Befehl wiederherstellen:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>iptables-restore myTables.txt
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="arabic simple" start="6">
 <li><p>Studieren Sie <code class="docutils literal notranslate"><span class="pre">MrTimeDaemon.c</span></code>, <code class="docutils literal notranslate"><span class="pre">Daemonizer.c</span></code> und <code class="docutils literal notranslate"><span class="pre">TimeDaemon.c</span></code> und analysieren Sie, wie die Daemonisierung abläuft. Entfernen Sie die Kommentare im Macro <code class="docutils literal notranslate"><span class="pre">Out-PutPIDs</span></code> am Anfang des Moduls <code class="docutils literal notranslate"><span class="pre">Daemonizer.c</span></code>. Übersetzen Sie die Programme mit make und starten Sie <code class="docutils literal notranslate"><span class="pre">MrTimeDaemon</span></code> erneut. Analysieren Sie die Ausgabe, was fällt Ihnen auf? Notieren Sie alle für die vollständige Daemonisierung notwendigen Schritte.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<ol class="arabic">
+<ol class="arabic" start="7">
 <li><p>Setzen Sie beim Aufruf von <code class="docutils literal notranslate"><span class="pre">Daemonizer()</span></code> in <code class="docutils literal notranslate"><span class="pre">MrTimeDaemon.c</span></code> anstelle von <code class="docutils literal notranslate"><span class="pre">lock-FilePath</span></code> den Null-Zeiger <code class="docutils literal notranslate"><span class="pre">NULL</span></code> ein. Damit wird keine lock-Datei erzeugt. Übersetzen Sie die Programme und starten Sie erneut <code class="docutils literal notranslate"><span class="pre">MrTimedaemon</span></code>. Was geschieht bzw. wie können Sie feststellen, was geschehen ist?</p>
 <p><strong>Hinweis:</strong> lesen Sie das log-File: <code class="docutils literal notranslate"><span class="pre">/tmp/timeDaemon.log.</span></code></p>
 </li>
@@ -207,7 +211,6 @@ Die Firewall können Sie mit folgendem Befehl wiederherstellen:</p>
 <li class="toctree-l1"><a class="reference internal" href="../P01_Erste_Schritte_mit_C/README.html">01 - Erste Schritte mit C</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P02_Funktionen_Datentyp_enum/README.html">02:  Funktionen, Datentyp “enum”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P06_Personen_Verwaltung_Linked_List/README.html">06 - Personen Verwaltung – Linked List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="README.html">07 - Prozesse und Threads</a></li>
@@ -249,7 +252,7 @@ Die Firewall können Sie mit folgendem Befehl wiederherstellen:</p>
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

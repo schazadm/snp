@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>08 - Synchronisationsprobleme &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -88,8 +92,8 @@ Erweitern sie nun alle Prozesse aus Schritt 2 mit den notwendigen Semaphore Oper
 Implementieren und testen sie das vollständige Programm.</p></li>
 </ul>
 <p><img alt="" src="../_images/coffee_customer.png" /></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">coin</span>   <span class="o">=</span> <span class="n">sem_open</span><span class="p">(...,</span><span class="mi">0</span><span class="p">);</span>
-<span class="n">coffee</span> <span class="o">=</span> <span class="n">sem_open</span><span class="p">(...,</span><span class="mi">0</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">coin</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">sem_open</span><span class="p">(...,</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">coffee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_open</span><span class="p">(...,</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Ablaufgraph und Pseudocode für 2 Prozesse und zwei Semaphore<br />
@@ -114,17 +118,17 @@ Analysieren sie die Datenwerte in den Fehlermeldungen, beschreiben sie was die G
 <li><p>Schützen sie nun den Zugriff auf die gemeinsamen Daten mit einem Mutex so, dass alle Threads eine konsistente Sicht der Daten haben.
 Wir haben für sie einen Mutex vorbereitet: die Datenstruktur <em>cData</em> enthält die Mutex-Variable <em>mutex</em>, die in <strong>startApp.c</strong> initialisiert wird. Die Funktionen für das Schliessen und das Öffnen des Mutex (Locks) aus der <em>pthread</em> Bibliothek sind:</p></li>
 </ol>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pthread</span> <span class="n">mutex</span> <span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">cD</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">));</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pthread</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">cD</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>und</p></li>
 </ul>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pthread</span> <span class="n">mutex</span> <span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">cD</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">));</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pthread</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">cD</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">));</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Überprüfen sie, ob der Kaffee-Automat nun keine Fehlermeldungen mehr ausgibt. Erhö-hen sie dazu auch die Anzahl Kunden <em>CUSTOMERS</em> in <strong>commonDefs.h</strong>, z.B. auf 10.</p>
-<ol class="arabic simple">
+<ol class="arabic simple" start="3">
 <li><p>Im Thread des Kaffee-Automaten wird an verschiedenen Orten mehrmals auf die gemeinsamen Daten in <em>cD</em> zugegriffen. Wenn sie die gemeinsamen Daten in lokale Variablen kopieren und dann nur noch auf diese lokalen Variablen zugreifen würden, könn-ten sie dann auf die Synchronisation mit dem Mutex verzichten?</p></li>
 <li><p>Wie oft kann ein einzelner Kunde einen Kaffee beziehen, bis der nächste Kunde an die Reihe kommt? Hier reicht eine qualitative Aussage.</p></li>
 </ol>
@@ -146,15 +150,15 @@ Im Folgenden soll eine erzwungene Verarbeitungsreihenfolge implementiert werden:
 <li><p>Implementieren sie nun den Kaffee-Automaten. Ergänzen sie dazu den <em>coffeeTeller</em> und den <em>customer</em> Prozess so mit vier Semaphoren, dass die vorgegebenen Ablaufbedingungen eingehalten werden. Mit welchen Werten müssen die Semaphore initialisiert werden?
 Wir haben für sie vier Semaphore vorbereitet: Achtung, sie sind aber noch auskommentiert (siehe commonDefs.h und startApp.c. Die benötigten Semaphor-Funktionen aus der POSIX Bibliothek sind:</p></li>
 </ol>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">semaphor</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">semaphor</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>und</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">semaphor</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">semaphor</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Analysieren sie die Ausgabe der Prozesse (mehrmals starten). Was fällt auf?</p>
-<ol class="arabic simple">
+<ol class="arabic simple" start="3">
 <li><p>Gibt Ihr Programm den Output in der korrekten Reihenfolge aus? Falls nicht, wie könnte das gelöst werden?</p></li>
 </ol>
 </section>
@@ -290,7 +294,6 @@ Wichtiger
 <li class="toctree-l1"><a class="reference internal" href="../P01_Erste_Schritte_mit_C/README.html">01 - Erste Schritte mit C</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P02_Funktionen_Datentyp_enum/README.html">02:  Funktionen, Datentyp “enum”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P06_Personen_Verwaltung_Linked_List/README.html">06 - Personen Verwaltung – Linked List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P07_Prozesse_und_Threads/README.html">07 - Prozesse und Threads</a></li>
@@ -369,7 +372,7 @@ Wichtiger
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

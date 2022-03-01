@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>06 - Personen Verwaltung – Linked List &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -98,18 +102,18 @@ Abbildung 1: Zyklisch verkettete Liste</p>
 <p>Die für je eine Person zu speichernden Daten sollen in folgendem C <code class="docutils literal notranslate"><span class="pre">struct</span></code> zusammengefasst sein.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#define NAME_LEN 20</span>
 
-<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
-  <span class="kt">char</span>         <span class="n">name</span><span class="p">[</span><span class="n">NAME_LEN</span><span class="p">];</span>
-  <span class="kt">char</span>         <span class="n">first_name</span><span class="p">[</span><span class="n">NAME_LEN</span><span class="p">];</span>
-  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">person_t</span><span class="p">;</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w">         </span><span class="n">name</span><span class="p">[</span><span class="n">NAME_LEN</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w">         </span><span class="n">first_name</span><span class="p">[</span><span class="n">NAME_LEN</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">person_t</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Jeder Knoten der verketteten Liste soll aus folgendem C <code class="docutils literal notranslate"><span class="pre">struct</span></code> bestehen.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">node</span> <span class="p">{</span>
-  <span class="n">person_t</span>     <span class="n">content</span><span class="p">;</span>        <span class="c1">// in diesem Knoten gespeicherte Person</span>
-  <span class="k">struct</span> <span class="nc">node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>           <span class="c1">// Pointer auf den nächsten Knoten in der Liste</span>
-<span class="p">}</span> <span class="n">node_t</span><span class="p">;</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">person_t</span><span class="w">     </span><span class="n">content</span><span class="p">;</span><span class="w">        </span><span class="c1">// in diesem Knoten gespeicherte Person</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w">           </span><span class="c1">// Pointer auf den nächsten Knoten in der Liste</span>
+<span class="p">}</span><span class="w"> </span><span class="n">node_t</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>Vorschlag: zyklisch verkettete Liste</strong></p>
@@ -119,7 +123,7 @@ Abbildung 1: Zyklisch verkettete Liste</p>
 <p><strong>Sortiertes Einfügen</strong></p>
 <p>Die Personen Records sollen sortiert in die Liste eingefügt werden. Dies bedeutet, dass vom Anker her gesucht werden soll, bis der erste Knoten gefunden wurde dessen Nachfolgeknoten entweder „grösser“ ist als der einzufügende Knoten, oder wo das Ende der Liste erreicht ist. Die Ordnung (grösser, gleich, kleiner) soll so definiert sein:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// if (p1 &gt; p2) { ... }</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">person_compare</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">p2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">person_compare</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">p2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="cm">/**</span>
 <span class="cm"> * @brief  Compares two persons in this sequence: 1st=name, 2nd=first_name, 3rd=age</span>
 <span class="cm"> * @param  a [IN] const reference to 1st person in the comparison</span>
@@ -129,8 +133,8 @@ Abbildung 1: Zyklisch verkettete Liste</p>
 <span class="cm"> *         &lt;0 if all previous fields are the same, but for this field, b is greater</span>
 <span class="cm"> * @remark strncmp() is used for producing the result of string field comparisons</span>
 <span class="cm"> * @remark a-&gt;age – b-&gt;age is used for producing the result of age comparison</span>
-<span class="cm"> */</span>
-<span class="kt">int</span> <span class="n">person_compare</span><span class="p">(</span><span class="k">const</span> <span class="n">person_t</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">person_t</span> <span class="o">*</span><span class="n">b</span><span class="p">);</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">person_compare</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">person_t</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">person_t</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>Eingabe</strong></p>
@@ -187,12 +191,12 @@ Abbildung 1: Zyklisch verkettete Liste</p>
 <p>Kreieren Sie folgende Files in <code class="docutils literal notranslate"><span class="pre">src</span></code> und implementieren Sie <code class="docutils literal notranslate"><span class="pre">main.c</span></code> basierend auf dem unten von Ihnen gegebenen API.</p>
 <p><strong>File person.h</strong></p>
 <p>Typ Definitionen:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">person_t</span><span class="p">...</span> <span class="c1">// siehe Beschreibung oben</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">person_t</span><span class="p">...</span><span class="w"> </span><span class="c1">// siehe Beschreibung oben</span>
 </pre></div>
 </div>
 <p>Funktionsdeklarationen:</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// siehe Beschreibung oben</span>
-<span class="kt">int</span> <span class="nf">person_compare</span><span class="p">(</span><span class="k">const</span> <span class="n">person_t</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">person_t</span> <span class="o">*</span><span class="n">b</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">person_compare</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">person_t</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">person_t</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -200,7 +204,7 @@ Abbildung 1: Zyklisch verkettete Liste</p>
 </ul>
 <p><strong>File list.h</strong></p>
 <p>Typ Definitionen:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">person_t</span><span class="p">...</span> <span class="c1">// siehe Beschreibung oben</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">person_t</span><span class="p">...</span><span class="w"> </span><span class="c1">// siehe Beschreibung oben</span>
 </pre></div>
 </div>
 <p>Funktionsdeklarationen:</p>
@@ -317,7 +321,6 @@ Abbildung 1: Zyklisch verkettete Liste</p>
 <li class="toctree-l1"><a class="reference internal" href="../P01_Erste_Schritte_mit_C/README.html">01 - Erste Schritte mit C</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P02_Funktionen_Datentyp_enum/README.html">02:  Funktionen, Datentyp “enum”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">06 - Personen Verwaltung – Linked List</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#ubersicht">1. Übersicht</a></li>
@@ -379,7 +382,7 @@ Abbildung 1: Zyklisch verkettete Liste</p>
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

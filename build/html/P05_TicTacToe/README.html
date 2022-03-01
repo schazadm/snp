@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>05 - Arrays/Strings/TicTacToe &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -16,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="06 - Personen Verwaltung – Linked List" href="../P06_Personen_Verwaltung_Linked_List/README.html" />
-    <link rel="prev" title="04 - Modularisieren von C Code" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html" />
+    <link rel="prev" title="03 - Bit Operationen, Struct, Typedef" href="../P03_Bit_Operation_struct_typedef/README.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -146,27 +150,27 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
              asserts      <span class="m">6</span>      <span class="m">6</span>      <span class="m">0</span>      <span class="m">6</span>      n/a
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="arabic simple" start="2">
 <li><p>Konzentrieren Sie sich auf den ersten Test der fehlschlägt. Dies ist ein Unit Test, welcher die Funktion <strong>model_init()</strong> prüft. Suchen Sie die Funktion in <strong>src/model.h</strong> und <strong>src/model.c</strong>.</p></li>
 <li><p>Was ist die geforderte Funktionalität und wie ist sie implementiert?</p></li>
 </ol>
 <p>Suchen Sie die darin aufgerufene <strong>model_init()</strong> Funktion und implementieren Sie diese.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">model_init</span><span class="p">(</span><span class="n">model_t</span> <span class="o">*</span><span class="n">instance</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">model_init</span><span class="p">(</span><span class="n">model_t</span><span class="w"> </span><span class="o">*</span><span class="n">instance</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span><span class="w"></span>
 
-    <span class="c1">// Instructions to the students:</span>
-    <span class="c1">// set all fields of the board to model_state_none</span>
-    <span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
+<span class="w">    </span><span class="c1">// Instructions to the students:</span>
+<span class="w">    </span><span class="c1">// set all fields of the board to model_state_none</span>
+<span class="w">    </span><span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
 
 
 
-    <span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
+<span class="p">}</span><span class="w"></span>
 
 </pre></div>
 </div>
-<ol class="arabic simple">
+<ol class="arabic simple" start="3">
 <li><p>Führen Sie <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">test</span></code> und korrigieren Sie obige Funktion, bis der Test nicht mehr fehlschlägt.</p></li>
 </ol>
 </section>
@@ -179,21 +183,21 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
 <li><p>Suchen Sie die Funktion <strong>model_get_state()</strong> in <strong>model.h</strong> und <strong>model.c</strong>.</p></li>
 <li><p>Implementieren Sie die intern benutzte Funktion <strong>get_state()</strong> gemäss der Anleitung im Code.</p></li>
 </ol>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">model_state_t</span> <span class="nf">model_get_state</span><span class="p">(</span><span class="n">model_t</span> <span class="o">*</span><span class="n">instance</span><span class="p">,</span> <span class="n">model_pos_t</span> <span class="n">pos</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
-    <span class="n">assert_pos</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">model_state_t</span><span class="w"> </span><span class="nf">model_get_state</span><span class="p">(</span><span class="n">model_t</span><span class="w"> </span><span class="o">*</span><span class="n">instance</span><span class="p">,</span><span class="w"> </span><span class="n">model_pos_t</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">assert_pos</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"></span>
 
-    <span class="c1">// Instructions to the students:</span>
-    <span class="c1">// replace the stub implementation my access to the field at the given position.</span>
-    <span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
-
-
-    <span class="k">return</span> <span class="n">model_state_none</span><span class="p">;</span> <span class="c1">// stub</span>
+<span class="w">    </span><span class="c1">// Instructions to the students:</span>
+<span class="w">    </span><span class="c1">// replace the stub implementation my access to the field at the given position.</span>
+<span class="w">    </span><span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
 
 
-    <span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">model_state_none</span><span class="p">;</span><span class="w"> </span><span class="c1">// stub</span>
+
+
+<span class="w">    </span><span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
+<span class="p">}</span><span class="w"></span>
 
 
 </pre></div>
@@ -203,20 +207,20 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
 <section id="teilaufgabe-test-model-can-move">
 <h3>4.3 Teilaufgabe test_model_can_move<a class="headerlink" href="#teilaufgabe-test-model-can-move" title="Permalink to this headline">¶</a></h3>
 <p>Gehen Sie analog den obigen Teilaufgaben vor und implementieren Sie, gemäss Vorgaben im Code, die Funktion <strong>model_can_move()</strong>.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">model_can_move</span><span class="p">(</span><span class="n">model_t</span> <span class="o">*</span><span class="n">instance</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">assert</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">model_get_winner</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span> <span class="o">==</span> <span class="n">model_state_none</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Instructions to the students:</span>
-        <span class="c1">// scan all fields: return 1 with first field which equals model_state_none</span>
-        <span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">model_can_move</span><span class="p">(</span><span class="n">model_t</span><span class="w"> </span><span class="o">*</span><span class="n">instance</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">model_get_winner</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">model_state_none</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Instructions to the students:</span>
+<span class="w">        </span><span class="c1">// scan all fields: return 1 with first field which equals model_state_none</span>
+<span class="w">        </span><span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
 
 
 
-        <span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 </pre></div>
 </div>
@@ -230,20 +234,20 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
 <span class="cm"> * @param  instance [INOUT]  The instance which holds the state.</span>
 <span class="cm"> * @param  pos      [IN]     The affected field.</span>
 <span class="cm"> * @param  state    [IN]     The new state of the field.</span>
-<span class="cm"> */</span>
-<span class="k">static</span> <span class="kt">void</span> <span class="n">set_state</span><span class="p">(</span><span class="n">model_t</span> <span class="o">*</span><span class="n">instance</span><span class="p">,</span> <span class="n">model_pos_t</span> <span class="n">pos</span><span class="p">,</span> <span class="n">model_state_t</span> <span class="n">state</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">assert_pos</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_state</span><span class="p">(</span><span class="n">model_t</span><span class="w"> </span><span class="o">*</span><span class="n">instance</span><span class="p">,</span><span class="w"> </span><span class="n">model_pos_t</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">model_state_t</span><span class="w"> </span><span class="n">state</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">assert_pos</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span><span class="w"></span>
 
-    <span class="c1">// Instructions to the students:</span>
-    <span class="c1">// set the field of the board to the new state</span>
-    <span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
-
-
+<span class="w">    </span><span class="c1">// Instructions to the students:</span>
+<span class="w">    </span><span class="c1">// set the field of the board to the new state</span>
+<span class="w">    </span><span class="c1">// BEGIN-STUDENTS-TO-ADD-CODE</span>
 
 
-    <span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
-<span class="p">}</span>
+
+
+<span class="w">    </span><span class="c1">// END-STUDENTS-TO-ADD-CODE</span>
+<span class="p">}</span><span class="w"></span>
 
 </pre></div>
 </div>
@@ -321,7 +325,6 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
 <li class="toctree-l1"><a class="reference internal" href="../P01_Erste_Schritte_mit_C/README.html">01 - Erste Schritte mit C</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P02_Funktionen_Datentyp_enum/README.html">02:  Funktionen, Datentyp “enum”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">05 - Arrays/Strings/TicTacToe</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#ubersicht">1. Übersicht</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#lernziele">2. Lernziele</a></li>
@@ -347,7 +350,7 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html" title="previous chapter">04 - Modularisieren von C Code</a></li>
+      <li>Previous: <a href="../P03_Bit_Operation_struct_typedef/README.html" title="previous chapter">03 - Bit Operationen, Struct, Typedef</a></li>
       <li>Next: <a href="../P06_Personen_Verwaltung_Linked_List/README.html" title="next chapter">06 - Personen Verwaltung – Linked List</a></li>
   </ul></li>
 </ul>
@@ -378,7 +381,7 @@ Run Summary:    Type  Total    Ran Passed Failed Inactive
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
