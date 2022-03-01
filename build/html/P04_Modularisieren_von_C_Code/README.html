@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>04 - Modularisieren von C Code &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -15,6 +19,8 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="05 - Arrays/Strings/TicTacToe" href="../P05_TicTacToe/README.html" />
+    <link rel="prev" title="03 - Bit Operationen, Struct, Typedef" href="../P03_Bit_Operation_struct_typedef/README.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -33,26 +39,10 @@
             
   <section class="tex2jax_ignore mathjax_ignore" id="modularisieren-von-c-code">
 <h1>04 - Modularisieren von C Code<a class="headerlink" href="#modularisieren-von-c-code" title="Permalink to this headline">¶</a></h1>
-<figure class="align-right" id="logo">
-<a class="reference internal image-reference" href="P04_Modularisieren_von_C_Code/zhaw_neg_P2945.jpg"><img alt="P04_Modularisieren_von_C_Code/zhaw_neg_P2945.jpg" src="P04_Modularisieren_von_C_Code/zhaw_neg_P2945.jpg" style="width: 100px;" /></a>
-</figure>
+<p><img alt="" src="../_images/modularisieren_von_c_code.JPG" /></p>
 <hr class="docutils" />
-<figure class="align-center" id="logo">
-<a class="reference internal image-reference" href="../_images/modularisieren_von_c_code.JPG"><img alt="../_images/modularisieren_von_c_code.JPG" src="../_images/modularisieren_von_c_code.JPG" style="width: 500px;" /></a>
-</figure>
-<hr class="docutils" />
-<section id="inhalt">
-<h2>Inhalt<a class="headerlink" href="#inhalt" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="#introduction"><span class="std std-ref">1. Übersicht</span></a></p>
-<p><a class="reference internal" href="#learning-objectives"><span class="std std-ref">2. Lernziele</span></a></p>
-<p><a class="reference internal" href="#task-01"><span class="std std-ref">3. Aufgabe 1: Modularisieren</span></a></p>
-<p><a class="reference internal" href="#task-02"><span class="std std-ref">4. Aufgabe 2: Makefile Regeln</span></a></p>
-<p><a class="reference internal" href="#grading"><span class="std std-ref">5. Bewertung</span></a></p>
-<p><a class="reference internal" href="#appendix"><span class="std std-ref">6. Anhang</span></a></p>
-<hr class="docutils" />
-</section>
 <section id="ubersicht">
-<span id="introduction"></span><h2>1. Übersicht<a class="headerlink" href="#ubersicht" title="Permalink to this headline">¶</a></h2>
+<h2>1. Übersicht<a class="headerlink" href="#ubersicht" title="Permalink to this headline">¶</a></h2>
 <p>In diesem Praktikum üben Sie modulare Programmierung indem Sie ein
 Java Programm (bestehend aus drei Java Files) in ein entsprechendes C
 Programm aus drei Modulen (aus je einem Header- und Implementations-
@@ -61,13 +51,11 @@ entsprechenden Module mit kompiliert werden.</p>
 <p>In der zweiten Aufgabe erstellen Sie Makefile Regeln für die drei
 Schritte von den C Source Files zur graphischen Darstellung der
 Abhängigkeiten.</p>
-<figure class="align-center" id="uebersicht">
-<a class="reference internal image-reference" href="../_images/uebersicht.png"><img alt="../_images/uebersicht.png" src="../_images/uebersicht.png" style="width: 500px;" /></a>
-</figure>
+<p><img alt="" src="../_images/uebersicht.png" /></p>
 <p>Im Anhang ist eine Übersicht über die verwendeten File Formate gegeben.</p>
 </section>
 <section id="lernziele">
-<span id="learning-objectives"></span><h2>2. Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">¶</a></h2>
+<h2>2. Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">¶</a></h2>
 <p>In diesem Praktikum lernen Sie die Handgriffe um ein Programm zu modularisieren, d.h. in mehrere Module aufzuteilen.</p>
 <ul class="simple">
 <li><p>Sie wissen, dass ein Modul aus einem C-File und einem passenden
@@ -84,7 +72,7 @@ eines Moduls.</p></li>
 Repository <code class="docutils literal notranslate"><span class="pre">snp-lab-code</span></code> verfügbar sind.</p>
 </section>
 <section id="aufgabe-1-modularisieren">
-<span id="task-01"></span><h2>3. Aufgabe 1: Modularisieren<a class="headerlink" href="#aufgabe-1-modularisieren" title="Permalink to this headline">¶</a></h2>
+<h2>3. Aufgabe 1: Modularisieren<a class="headerlink" href="#aufgabe-1-modularisieren" title="Permalink to this headline">¶</a></h2>
 <p>Das zu ergänzende Programm dep2dot hat folgende Funktionalität:</p>
 <p>Ergänzen Sie in <strong><code class="docutils literal notranslate"><span class="pre">modularize/src</span></code></strong> den Code in <strong><code class="docutils literal notranslate"><span class="pre">triangle.c</span></code></strong>,
 <strong><code class="docutils literal notranslate"><span class="pre">read.h</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">read.c</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">rectang.h</span></code></strong> und <strong><code class="docutils literal notranslate"><span class="pre">rectang.c</span></code></strong> so
@@ -216,7 +204,7 @@ table th:nth-of-type(2) {
 </section>
 </section>
 <section id="aufgabe-2-makefile-regeln">
-<span id="task-02"></span><h2>4. Aufgabe 2: Makefile Regeln<a class="headerlink" href="#aufgabe-2-makefile-regeln" title="Permalink to this headline">¶</a></h2>
+<h2>4. Aufgabe 2: Makefile Regeln<a class="headerlink" href="#aufgabe-2-makefile-regeln" title="Permalink to this headline">¶</a></h2>
 <p>Die folgenden drei Schritte erstellen von einem C Source File eine
 graphische Darstellung der Abhängigkeiten:</p>
 <ol class="arabic simple">
@@ -226,9 +214,7 @@ graphische Darstellung der Abhängigkeiten:</p>
 </ol>
 <p>Sie sollen für die Compiler-ähnlichen Programme <code class="docutils literal notranslate"><span class="pre">dep2dot</span></code> und <code class="docutils literal notranslate"><span class="pre">dot</span></code>
 Makefile Regeln schreiben.</p>
-<figure class="align-center" id="uebersicht">
-<a class="reference internal image-reference" href="../_images/uebersicht.png"><img alt="../_images/uebersicht.png" src="../_images/uebersicht.png" style="width: 500px;" /></a>
-</figure>
+<p><img alt="" src="../_images/uebersicht.png" /></p>
 <p>Das Programm <code class="docutils literal notranslate"><span class="pre">dep2dot</span></code> hat folgende Funktionalität:</p>
 <ol class="arabic simple">
 <li><p>Es liest von <code class="docutils literal notranslate"><span class="pre">stdin</span></code> die vom Compiler generierten
@@ -256,14 +242,12 @@ firefox dep.png
 </pre></div>
 </div>
 <p>Als Resultat sollte Firefox folgende Graphik darstellen:</p>
-<figure class="align-center" id="dep-dot">
-<a class="reference internal image-reference" href="../_images/dep_dot.png"><img alt="../_images/dep_dot.png" src="../_images/dep_dot.png" style="width: 150px;" /></a>
-</figure>
+<p><img alt="" src="../_images/dep_dot.png" /></p>
 <p>Definieren Sie im <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> Regeln, welche die einzelnen Schritte von
 den Source Files zu den <code class="docutils literal notranslate"><span class="pre">png</span></code> Files ausführen.</p>
 <p>Prüfen Sie schliesslich die Umsetzung Aufgabe mittels <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dep-clean</span> <span class="pre">dep</span> <span class="pre">&amp;&amp;</span> <span class="pre">firefox</span> <span class="pre">src/*.png.</span></code></p>
 <section id="neue-regeln-hinzufugen">
-<h3>4.1	Neue Regeln hinzufügen<a class="headerlink" href="#neue-regeln-hinzufugen" title="Permalink to this headline">¶</a></h3>
+<h3>4.1 Neue Regeln hinzufügen<a class="headerlink" href="#neue-regeln-hinzufugen" title="Permalink to this headline">¶</a></h3>
 <p>Führen Sie im <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> an den angegebenen Stellen folgende
 Ergänzungen durch</p>
 <ul class="simple">
@@ -284,13 +268,21 @@ macht</p></li>
 </ul>
 <p>Die Umsetzung der obigen Änderungen sind erfolgreich, wenn Sie
 folgende Shell Command Line erfolgreich ausführen können und in
-Firefox die Abhängigkeiten der C-Files von den Inclu-de Files
+Firefox die Abhängigkeiten der C-Files von den Include Files
 dargestellt wird.</p>
 <p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">dep-clean</span> <span class="pre">dep</span> <span class="pre">&amp;&amp;</span> <span class="pre">firefox</span> <span class="pre">src/*.png.</span></code></p>
 </section>
+<section id="resultate-analysieren-und-erklaren">
+<h3>4.2 Resultate analysieren und erklären<a class="headerlink" href="#resultate-analysieren-und-erklaren" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Analysieren Sie die in der vorherigen Aufgabe erstellten grafischen Darstellungen.</p></li>
+<li><p>Erklären Sie was dargestellt wird und stellen Sie den Bezug zum zugehörigen C-Code her.</p></li>
+</ul>
 </section>
+</section>
+<hr class="docutils" />
 <section id="bewertung">
-<span id="grading"></span><h2>5. Bewertung<a class="headerlink" href="#bewertung" title="Permalink to this headline">¶</a></h2>
+<h2>5. Bewertung<a class="headerlink" href="#bewertung" title="Permalink to this headline">¶</a></h2>
 <p>Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmcode müssen der Praktikumsbetreuung gezeigt werden. Die Lösungen müssen mündlich erklärt werden.</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
@@ -319,24 +311,18 @@ dargestellt wird.</p>
 </tbody>
 </table>
 </section>
+<hr class="docutils" />
 <section id="anhang">
-<span id="appendix"></span><h2>6. Anhang<a class="headerlink" href="#anhang" title="Permalink to this headline">¶</a></h2>
+<h2>6. Anhang<a class="headerlink" href="#anhang" title="Permalink to this headline">¶</a></h2>
 <section id="verwendete-zusatzliche-sprach-elemente">
 <h3>6.1	Verwendete zusätzliche Sprach Elemente<a class="headerlink" href="#verwendete-zusatzliche-sprach-elemente" title="Permalink to this headline">¶</a></h3>
-<table><tr><td>
 <p><strong>Sprach Element</strong></p>
-</td><td>
-<p><strong>Beschreibung</strong></p>
-</td></tr>
-<tr><td>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;v=%d&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;v=%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-</td><td>
+<p><strong>Beschreibung</strong></p>
 <p>Formatierte Ausgabe auf den Standard Error Stream. Siehe <em><strong>man 3
 stderr</strong></em> und <em><strong>man 3 fprintf</strong></em>.</p>
-</td></tr>
-</table>
 </section>
 <section id="verarbeitung-und-verwendete-file-formate-a-name-file-formats-a">
 <h3>6.2	Verarbeitung und verwendete File Formate <a name="file_formats"></a><a class="headerlink" href="#verarbeitung-und-verwendete-file-formate-a-name-file-formats-a" title="Permalink to this headline">¶</a></h3>
@@ -418,40 +404,41 @@ andere Formate übersetzt.</p>
 <p>Es gibt als Teil dieses Tool-Sets verschiedene Übersetzer. Der hier
 verwendete ist der Basis-übersetzer: <code class="docutils literal notranslate"><span class="pre">dot</span></code>.</p>
 <p>Das <code class="docutils literal notranslate"><span class="pre">dot</span></code>-File Format kennt viele Möglichkeiten die Knoten und Kanten
-eines Graphen und de-ren Anordnung anzugeben.</p>
+eines Graphen und deren Anordnung anzugeben.</p>
 <p>Der Vorteil eines solchen Tool-Sets ist, dass man den Inhalt (den
 Graphen) einfach definieren kann und sich nicht um das komplexe
 Problem der ansprechenden Visualisierung kümmern muss.</p>
 <p><strong>Beispiel File</strong> (<code class="docutils literal notranslate"><span class="pre">dot</span> <span class="pre">-Tpng</span> <span class="pre">sample.dot</span> <span class="pre">&gt;</span> <span class="pre">sample.png</span></code>)</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">digraph</span> <span class="n">G</span> <span class="p">{</span>
-   <span class="n">node</span> <span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="n">box</span><span class="p">]</span>
-   <span class="n">A</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.c&quot;</span><span class="p">];</span>
-   <span class="n">B</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.h&quot;</span><span class="p">];</span>
-   <span class="n">C</span> <span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;b.h&quot;</span><span class="p">];</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">digraph</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">node</span><span class="w"> </span><span class="p">[</span><span class="n">shape</span><span class="o">=</span><span class="n">box</span><span class="p">]</span><span class="w"></span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.c&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="n">B</span><span class="w"> </span><span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;a.h&quot;</span><span class="p">];</span><span class="w"></span>
+<span class="w">   </span><span class="n">C</span><span class="w"> </span><span class="p">[</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;b.h&quot;</span><span class="p">];</span><span class="w"></span>
 
-   <span class="n">subgraph</span> <span class="n">cluster_c0</span> <span class="p">{</span>
-      <span class="n">label</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">;</span> <span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">;</span>
-      <span class="n">A</span><span class="p">;</span>
-   <span class="p">}</span>
+<span class="w">   </span><span class="n">subgraph</span><span class="w"> </span><span class="n">cluster_c0</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">black</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-   <span class="n">subgraph</span> <span class="n">cluster_c1</span> <span class="p">{</span>
-      <span class="n">label</span><span class="o">=</span><span class="s">&quot;others&quot;</span><span class="p">;</span> <span class="n">style</span><span class="o">=</span><span class="n">filled</span><span class="p">;</span> <span class="n">col</span><span class="o">-</span><span class="n">or</span><span class="o">=</span><span class="n">lightgrey</span><span class="p">;</span>
-      <span class="p">{</span> <span class="n">B</span><span class="p">;</span> <span class="n">C</span><span class="p">;</span> <span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span> <span class="p">}</span>
-   <span class="p">}</span>
+<span class="w">   </span><span class="n">subgraph</span><span class="w"> </span><span class="n">cluster_c1</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;others&quot;</span><span class="p">;</span><span class="w"> </span><span class="n">style</span><span class="o">=</span><span class="n">filled</span><span class="p">;</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">lightgrey</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"> </span><span class="n">rank</span><span class="o">=</span><span class="n">same</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-   <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">B</span><span class="p">;</span>
-   <span class="n">A</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">;</span>
-   <span class="n">B</span> <span class="o">-&gt;</span> <span class="n">C</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">A</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="n">B</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">C</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<p><img alt="" src="../_images/bsp_dot.png" /></p>
 </section>
 <section id="png-file">
 <h4>6.2.3	png File<a class="headerlink" href="#png-file" title="Permalink to this headline">¶</a></h4>
 <p>Das <code class="docutils literal notranslate"><span class="pre">png</span></code> Format ist ein verlustfrei komprimiertes Raster Graphik
 Format. Es wird oft in Web Pages verwendet.</p>
 <hr class="docutils" />
-<p>Version: 15.02.2022</p>
+<p>Version: 22.02.2022</p>
 </section>
 </section>
 </section>
@@ -481,11 +468,35 @@ Format. Es wird oft in Web Pages verwendet.</p>
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../P01_Erste_Schritte_mit_C/README.html">01 - Erste Schritte mit C</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P02_Funktionen_Datentyp_enum/README.html">02:  Funktionen, Datentyp “enum”</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P03_Bit_Operation_struct_typedef/README.html">03 - Bit Operationen, Struct, Typedef</a></li>
-<li class="toctree-l1"><a class="reference internal" href="new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">04 - Modularisieren von C Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ubersicht">1. Übersicht</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lernziele">2. Lernziele</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aufgabe-1-modularisieren">3. Aufgabe 1: Modularisieren</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tipps">Tipps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#aufgabe-2-makefile-regeln">4. Aufgabe 2: Makefile Regeln</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neue-regeln-hinzufugen">4.1 Neue Regeln hinzufügen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resultate-analysieren-und-erklaren">4.2 Resultate analysieren und erklären</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bewertung">5. Bewertung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anhang">6. Anhang</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#verwendete-zusatzliche-sprach-elemente">6.1	Verwendete zusätzliche Sprach Elemente</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verarbeitung-und-verwendete-file-formate-a-name-file-formats-a">6.2	Verarbeitung und verwendete File Formate <a name="file_formats"></a></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dep-file">6.2.1	dep File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dot-file">6.2.2	dot File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#png-file">6.2.3	png File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P06_Personen_Verwaltung_Linked_List/README.html">06 - Personen Verwaltung – Linked List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P07_Prozesse_und_Threads/README.html">07 - Prozesse und Threads</a></li>
@@ -498,6 +509,8 @@ Format. Es wird oft in Web Pages verwendet.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../P03_Bit_Operation_struct_typedef/README.html" title="previous chapter">03 - Bit Operationen, Struct, Typedef</a></li>
+      <li>Next: <a href="../P05_TicTacToe/README.html" title="next chapter">05 - Arrays/Strings/TicTacToe</a></li>
   </ul></li>
 </ul>
 </div>
@@ -527,7 +540,7 @@ Format. Es wird oft in Web Pages verwendet.</p>
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

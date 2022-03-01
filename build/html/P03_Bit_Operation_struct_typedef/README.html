@@ -5,6 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="metadata description" lang="en" name="description" xml:lang="en" />
+<meta content="description des métadonnées" lang="fr" name="description" xml:lang="fr" />
+<meta content="Sphinx, MyST" name="keywords" />
+<meta content="en_US" property="og:locale" />
 
     <title>03 - Bit Operationen, Struct, Typedef &#8212; SNP Labs  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -15,7 +19,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="04 - Modularisieren von C Code" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html" />
+    <link rel="next" title="04 - Modularisieren von C Code" href="../P04_Modularisieren_von_C_Code/README.html" />
     <link rel="prev" title="02: Funktionen, Datentyp “enum”" href="../P02_Funktionen_Datentyp_enum/README.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -81,44 +85,44 @@
 <section id="basis-operationen">
 <h4>1. Basis Operationen<a class="headerlink" href="#basis-operationen" title="Permalink to this headline">¶</a></h4>
 <p>Manipulationen von einzelnen Bits gehören zu den Basis Operationen und dienen als Grundlagen um weitere komplexere Konstrukte zu schaffen. Verfollständigen sie folgendes Beispiel mit den drei Basis Operationen:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">number</span><span class="p">;</span>
-  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">bit</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// bit at position 3</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// bit at position 3</span>
 
-  <span class="c1">// Setting a bit</span>
-  <span class="n">number</span> <span class="o">=</span> <span class="p">...;</span> <span class="c1">// solution: number |= 1 &lt;&lt; bit;</span>
-  
-  <span class="c1">// Clearing a bit</span>
-  <span class="n">number</span> <span class="o">=</span> <span class="p">...;</span> <span class="c1">// solution: number &amp;= ~(1 &lt;&lt; bit);</span>
-  
-  <span class="c1">// Toggling a bit</span>
-  <span class="n">number</span> <span class="o">=</span> <span class="p">...;</span> <span class="c1">// solution; number ^= 1 &lt;&lt; bit;</span>
-  
-  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="c1">// Setting a bit</span>
+<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// solution: number |= 1 &lt;&lt; bit;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1">// Clearing a bit</span>
+<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// solution: number &amp;= ~(1 &lt;&lt; bit);</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1">// Toggling a bit</span>
+<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// solution; number ^= 1 &lt;&lt; bit;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="variablen-tauschen-ohne-dritt-variable">
 <h4>2. Variablen tauschen (ohne Dritt-Variable)<a class="headerlink" href="#variablen-tauschen-ohne-dritt-variable" title="Permalink to this headline">¶</a></h4>
 <p>Zwei Variablen zu vertauschen scheint ein einfach lösbares Problem zu sein. Eine offensichtliche Variante wäre mittels einer temporären Variablen:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-  
-  <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
-  <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
-  <span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
-  
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Es gibt aber auch eine Variante, die ohne zusätzliche Variable auskommt. Dabei wird die Tatsache, dass eine zweite XOR Operation eine erste XOR Operation rückgängig macht:</p>
@@ -126,62 +130,62 @@
 <p><em>0111 XOR 0100 = 0011</em></p>
 <p>Somit kommt man von einem XOR Resultat (<em>0111</em>) wieder auf beide Anfangs Operanden zurück indem man einfach ein zweites Mal mit einem Operanden eine XOR Verknüpfung macht. Damit kann ein Operand als Zwischenspeicher dienen und man muss nicht extra eine Zusatzvariable verwenden.</p>
 <p>Überlegen sie sich wie sie damit zwei Variablen vertauschen können ohne Zusatzvariable:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-  
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span>
 
-  <span class="p">...</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
 
-  <span class="cm">/* Solutions: </span>
+<span class="w">  </span><span class="cm">/* Solutions: </span>
 <span class="cm">          // a == 0011; b == 0100</span>
 <span class="cm">  a ^= b; // a == 0111; b == 0100</span>
 <span class="cm">  b ^= a; // a == 0111; b == 0011</span>
 <span class="cm">  a ^= b; // a == 0100; b == 0011</span>
-<span class="cm">  */</span>
-  
-  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="cm">  */</span><span class="w"></span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="lower-uppercase">
 <h4>3. Lower- / Uppercase<a class="headerlink" href="#lower-uppercase" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-  <span class="kt">char</span> <span class="n">word</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;sREedEv&quot;</span><span class="p">;</span>
-  <span class="kt">char</span> <span class="o">*</span><span class="n">wordptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">word</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;sREedEv&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">wordptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
 
-  <span class="k">while</span><span class="p">(</span><span class="n">wordptr</span> <span class="o">&lt;</span> <span class="o">&amp;</span><span class="n">word</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span> <span class="p">{</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;UPPERCASE: %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">wordptr</span> <span class="o">&amp;</span> <span class="sc">&#39;_&#39;</span><span class="p">);</span> <span class="c1">// converts the char into uppercase regardless of the current casing</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;LOWERCASE: %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">wordptr</span> <span class="o">|</span> <span class="sc">&#39; &#39;</span><span class="p">);</span> <span class="c1">// converts the char into lowercase regardless of the current casing</span>
-    <span class="n">wordptr</span><span class="o">++</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">wordptr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">word</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;UPPERCASE: %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">wordptr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="sc">&#39;_&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// converts the char into uppercase regardless of the current casing</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;LOWERCASE: %c</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">wordptr</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// converts the char into lowercase regardless of the current casing</span>
+<span class="w">    </span><span class="n">wordptr</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="prufen-auf-2-er-potenz">
 <h4>4. Prüfen auf 2-er Potenz<a class="headerlink" href="#prufen-auf-2-er-potenz" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-  <span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">32</span><span class="p">;</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d is a power of 2&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">32</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d is a power of 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -199,11 +203,11 @@
 <li><p>Rechnung wird als ein String über scanf dem Programm übergeben</p>
 <ul>
 <li><p>String wird in Token zerstückelt und in struct gespeichert:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
-  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">operand_1</span><span class="p">;</span>
-  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">operand_2</span><span class="p">;</span>
-  <span class="kt">char</span> <span class="n">operation</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">Expression</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">operand_1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">operand_2</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">Expression</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -313,7 +317,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#bewertung">4. Bewertung</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html">04 - Modularisieren von C Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../P04_Modularisieren_von_C_Code/README.html">04 - Modularisieren von C Code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P05_TicTacToe/README.html">05 - Arrays/Strings/TicTacToe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P06_Personen_Verwaltung_Linked_List/README.html">06 - Personen Verwaltung – Linked List</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../P07_Prozesse_und_Threads/README.html">07 - Prozesse und Threads</a></li>
@@ -327,7 +331,7 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../P02_Funktionen_Datentyp_enum/README.html" title="previous chapter">02:  Funktionen, Datentyp “enum”</a></li>
-      <li>Next: <a href="../P04_Modularisieren_von_C_Code/new_P04/P04_Modularisieren_von_C_Code.html" title="next chapter">04 - Modularisieren von C Code</a></li>
+      <li>Next: <a href="../P04_Modularisieren_von_C_Code/README.html" title="next chapter">04 - Modularisieren von C Code</a></li>
   </ul></li>
 </ul>
 </div>
@@ -357,7 +361,7 @@
       &copy;2022, stsh.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
