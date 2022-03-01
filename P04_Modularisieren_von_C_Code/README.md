@@ -301,7 +301,7 @@ dargestellt wird.
 * Analysieren Sie die in der vorherigen Aufgabe erstellten grafischen Darstellungen.
 * Erklären Sie was dargestellt wird und stellen Sie den Bezug zum zugehörigen C-Code her.
 
-
+___
 ## 5. Bewertung 
 
 Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmcode müssen der Praktikumsbetreuung gezeigt werden. Die Lösungen müssen mündlich erklärt werden.
@@ -314,39 +314,23 @@ Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmco
 | 2 | Neue Regeln hinzufügen | 2 |
 
 
-
+___
 
 ## 6. Anhang 
 
-
-
-
 ### 6.1	Verwendete zusätzliche Sprach Elemente
 
-<table><tr><td>
 
 **Sprach Element**
-
-</td><td>
-
-**Beschreibung**
-
-</td></tr>
-<tr><td>
-
-
 
 ```C
 fprintf(stderr, "v=%d", v)
 ```
 
-</td><td>
+**Beschreibung**
 
 Formatierte Ausgabe auf den Standard Error Stream. Siehe ***man 3
 stderr*** und ***man 3 fprintf***.
-
-</td></tr>
-</table>
 
 
 ### 6.2	Verarbeitung und verwendete File Formate <a name="file_formats"></a>
