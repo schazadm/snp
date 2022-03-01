@@ -120,7 +120,7 @@ if (monat == FEB) ...	// am besten lesbar
 ```
 
 
-Als Abnahme müssen die Tests unverändert ohne Fehler ausgeführt werden (`make test`)
+
 ___
 ### 3.2 Aufgabe 2 Bestimmen des Wochentags
 Erweitern Sie das vorgegebene zweite Programm Gerüst an den bezeichneten Stellen so, dass das Programm von der Kommando Zeile ein Argument entgegennimmt, es auf Gültigkeit überprüft und schliesslich den Wochentag für das gegebene Datum berechnet und ausgibt.
