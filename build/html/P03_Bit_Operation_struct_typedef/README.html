@@ -84,21 +84,33 @@
 <h3>1.1 Übungen<a class="headerlink" href="#ubungen" title="Permalink to this headline">¶</a></h3>
 <section id="basis-operationen">
 <h4>1. Basis Operationen<a class="headerlink" href="#basis-operationen" title="Permalink to this headline">¶</a></h4>
-<p>Manipulationen von einzelnen Bits gehören zu den Basis Operationen und dienen als Grundlagen um weitere komplexere Konstrukte zu schaffen. Verfollständigen sie folgendes Beispiel mit den drei Basis Operationen:</p>
+<p>Manipulationen von einzelnen Bits gehören zu den Basis Operationen und dienen als Grundlagen um weitere komplexere Konstrukte zu schaffen.</p>
+<p>Verfollständigen sie folgendes Beispiel mit den drei Basis Operationen. Dabei gibt die Variable <code class="docutils literal notranslate"><span class="pre">bit</span></code> an, welches Bit manipuliert werden soll (Denken sie daran, dass die Bit-Positionen bei 0 beginnen. Bit 3 ist also das vierte Bit von rechts). Bei den gefragten Manipulationen, soll nur das angegebene <code class="docutils literal notranslate"><span class="pre">bit</span></code> geändert werden und der Rest soll unverändert bleiben:</p>
+<ul class="simple">
+<li><p>Bit 3 setzen: <code class="docutils literal notranslate"><span class="pre">0011</span> <span class="pre">=&gt;</span> <span class="pre">1011</span></code></p></li>
+<li><p>Bit 1 löschen: <code class="docutils literal notranslate"><span class="pre">1011</span> <span class="pre">=&gt;</span> <span class="pre">1001</span></code></p></li>
+<li><p>Bit 0 flippen: <code class="docutils literal notranslate"><span class="pre">1001</span> <span class="pre">=&gt;</span> <span class="pre">1000</span></code></p></li>
+</ul>
+<p>Versuchen sie die Operationen in C umzusetzen:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x75</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// bit at position 3</span>
 
 <span class="w">  </span><span class="c1">// Setting a bit</span>
-<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// solution: number |= 1 &lt;&lt; bit;</span>
+<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
 <span class="w">  </span>
 <span class="w">  </span><span class="c1">// Clearing a bit</span>
-<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// solution: number &amp;= ~(1 &lt;&lt; bit);</span>
+<span class="w">  </span><span class="n">bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
 <span class="w">  </span>
 <span class="w">  </span><span class="c1">// Toggling a bit</span>
-<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"> </span><span class="c1">// solution; number ^= 1 &lt;&lt; bit;</span>
+<span class="w">  </span><span class="n">bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;number = 0x%02X</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -126,9 +138,9 @@
 </pre></div>
 </div>
 <p>Es gibt aber auch eine Variante, die ohne zusätzliche Variable auskommt. Dabei wird die Tatsache, dass eine zweite XOR Operation eine erste XOR Operation rückgängig macht:</p>
-<p><em>0011 XOR 0100 = 0111</em></p>
-<p><em>0111 XOR 0100 = 0011</em></p>
-<p>Somit kommt man von einem XOR Resultat (<em>0111</em>) wieder auf beide Anfangs Operanden zurück indem man einfach ein zweites Mal mit einem Operanden eine XOR Verknüpfung macht. Damit kann ein Operand als Zwischenspeicher dienen und man muss nicht extra eine Zusatzvariable verwenden.</p>
+<p><code class="docutils literal notranslate"><span class="pre">0011</span> <span class="pre">XOR</span> <span class="pre">0100</span> <span class="pre">=</span> <span class="pre">0111</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">0111</span> <span class="pre">XOR</span> <span class="pre">0100</span> <span class="pre">=</span> <span class="pre">0011</span></code></p>
+<p>Somit kommt man von einem XOR Resultat (<code class="docutils literal notranslate"><span class="pre">0111</span></code>) wieder auf beide Anfangs Operanden zurück indem man einfach ein zweites Mal mit einem Operanden eine XOR Verknüpfung macht. Damit kann ein Operand als Zwischenspeicher dienen und man muss nicht extra eine Zusatzvariable verwenden.</p>
 <p>Überlegen sie sich wie sie damit zwei Variablen vertauschen können ohne Zusatzvariable:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -138,15 +150,7 @@
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span>
-
 <span class="w">  </span><span class="p">...</span><span class="w"></span>
-
-<span class="w">  </span><span class="cm">/* Solutions: </span>
-<span class="cm">          // a == 0011; b == 0100</span>
-<span class="cm">  a ^= b; // a == 0111; b == 0100</span>
-<span class="cm">  b ^= a; // a == 0111; b == 0011</span>
-<span class="cm">  a ^= b; // a == 0100; b == 0011</span>
-<span class="cm">  */</span><span class="w"></span>
 <span class="w">  </span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;a: %d; b: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
@@ -156,6 +160,7 @@
 </section>
 <section id="lower-uppercase">
 <h4>3. Lower- / Uppercase<a class="headerlink" href="#lower-uppercase" title="Permalink to this headline">¶</a></h4>
+<p>Folgendes Code Beispiel kann Buchstaben in Gross- oder Kleinbuchstaben wandeln mit nur einer einzigen Bit-Operation. Überlegen sie sich warum das funktioniert, damit sie es jemand anderem in ihren Worten erklären könnten. Machen sie Notizen falls nötig.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
@@ -176,14 +181,19 @@
 </section>
 <section id="prufen-auf-2-er-potenz">
 <h4>4. Prüfen auf 2-er Potenz<a class="headerlink" href="#prufen-auf-2-er-potenz" title="Permalink to this headline">¶</a></h4>
+<p>Um eine gegebene Zahl zu prüfen ob sie eine 2er Potenz ist, können wir folgende Bit-Muster vergleichen:</p>
+<p>Beispiel mit der Zahl 8: <code class="docutils literal notranslate"><span class="pre">1000</span> <span class="pre">&amp;</span> <span class="pre">0111</span> <span class="pre">==</span> <span class="pre">0</span></code>. Wir prüfen also, ob die gegebene Zahl 8 (<code class="docutils literal notranslate"><span class="pre">1000</span></code>) nur ein Bit auf <code class="docutils literal notranslate"><span class="pre">1</span></code> hat und den Rest auf <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>Überlegen Sie sich einen Algorithmus um dies für beliebige positive Zahlen zu prüfen. Das Bitmuster, dass für die <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> Operation gebraucht wird, kann mittel Subtraktion von 1 berechnet werden (<code class="docutils literal notranslate"><span class="pre">1000</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">=</span> <span class="pre">0111</span></code>):</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span><span class="w"></span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="mi">32</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span><span class="w"> </span><span class="c1">// any positive number</span>
+
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...){</span><span class="w"></span>
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d is a power of 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
+
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
@@ -194,42 +204,51 @@
 <hr class="docutils" />
 <section id="struct-typedef">
 <h2>2. Struct &amp; typedef<a class="headerlink" href="#struct-typedef" title="Permalink to this headline">¶</a></h2>
-<section id="id1">
-<h3>2.1 Übungen<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <section id="bit-operationen-rechner">
-<h4>1. Bit Operationen Rechner<a class="headerlink" href="#bit-operationen-rechner" title="Permalink to this headline">¶</a></h4>
-<ul>
-<li><p>Bitweise Operationen mit 2 Operanden</p></li>
-<li><p>Rechnung wird als ein String über scanf dem Programm übergeben</p>
-<ul>
-<li><p>String wird in Token zerstückelt und in struct gespeichert:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">operand_1</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">operand_2</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">operation</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"> </span><span class="n">Expression</span><span class="p">;</span><span class="w"></span>
-</pre></div>
-</div>
-</li>
-<li><p>Ausgabe in 3 verschiedenen Formaten:</p>
+<h3>2.1 Bit Operationen Rechner<a class="headerlink" href="#bit-operationen-rechner" title="Permalink to this headline">¶</a></h3>
+<p>Vervollständigen sie das beiliegende Programm <code class="docutils literal notranslate"><span class="pre">bin_calculator.c</span></code>. Es soll einfache Bit-Operationen mit zwei Operanden lösen können. Die unterstützten Operationen sind:</p>
+<ul class="simple">
+<li><p>&amp; (AND)</p></li>
+<li><p>| (OR)</p></li>
+<li><p>^ (XOR)</p></li>
+<li><p>&lt; (left shift)</p></li>
+<li><p>&gt; (right shift)</p></li>
+</ul>
+<p>Eine Rechnung kann direkt als einen String eingeben werden (z.B: <code class="docutils literal notranslate"><span class="pre">0x0c</span> <span class="pre">^</span> <span class="pre">0x0f</span></code>). Dabei werden Hexadezimal, Oktal und Dezimal als Eingabeformate akzeptiert. Die Rechnung wird in 3 Teile aufgeteilt (Operand 1, Operand 2, Operation) und in einer Datenstruktur gespeichert (<code class="docutils literal notranslate"><span class="pre">struct</span></code>).</p>
+<p>Als Ausgabe soll die Rechnung wie folgt dargestellt werden:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bin</span><span class="p">:</span>
-  <span class="mi">0000</span><span class="s1">&#39;0000&#39;</span><span class="mi">0000</span><span class="s1">&#39;0001</span>
-<span class="o">&amp;</span> <span class="mi">0000</span><span class="s1">&#39;0000&#39;</span><span class="mi">0000</span><span class="s1">&#39;0011</span>
-  <span class="o">-------------------</span>
-  <span class="mi">0000</span><span class="s1">&#39;0000&#39;</span><span class="mi">0000</span><span class="s1">&#39;0001</span>
-  
-  <span class="n">Hex</span>
-  <span class="mh">0x01</span> <span class="o">&amp;</span> <span class="mh">0x03</span> <span class="o">=</span> <span class="mh">0x01</span>
+<span class="mi">00000000</span><span class="s1">&#39;00000000&#39;</span><span class="mi">00000000</span><span class="s1">&#39;00001100</span>
+<span class="mi">00000000</span><span class="s1">&#39;00000000&#39;</span><span class="mi">00000000</span><span class="s1">&#39;00001111 ^</span>
+<span class="o">-----------------------------------</span>
+<span class="mi">00000000</span><span class="s1">&#39;00000000&#39;</span><span class="mi">00000000</span><span class="s1">&#39;00000011</span>
 
-  <span class="n">Dec</span>
-  <span class="mi">1</span> <span class="o">&amp;</span> <span class="mi">3</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Hex</span><span class="p">:</span>
+<span class="mh">0x0c</span> <span class="o">^</span> <span class="mh">0x0f</span> <span class="o">=</span> <span class="mh">0x03</span>
+
+<span class="n">Dec</span><span class="p">:</span>
+<span class="mi">12</span> <span class="o">^</span> <span class="mi">15</span> <span class="o">=</span> <span class="mi">3</span>
 </pre></div>
 </div>
-</li>
-</ul>
-</li>
-</ul>
 </section>
+<section id="einfache-formen">
+<h3>2.2 Einfache Formen<a class="headerlink" href="#einfache-formen" title="Permalink to this headline">¶</a></h3>
+<p>Der Code in <code class="docutils literal notranslate"><span class="pre">simple_shape.c</span></code> kompiliert nicht. Überlegen sie sich, wie der neue Datentype <code class="docutils literal notranslate"><span class="pre">Graphic</span></code> aussehen soll, damit alle nötigen Informationen dazu gespeichert werden können.</p>
+<p>Eine Form (<code class="docutils literal notranslate"><span class="pre">Graphic</span></code>) wird aus folgenden Attributen zusammengesetzt:</p>
+<ul class="simple">
+<li><p><strong>Shape</strong>: <em>OVAL</em> oder <em>RECTANGLE</em> (verwenden sie dazu einen separaten <code class="docutils literal notranslate"><span class="pre">enum</span></code> Typ)</p></li>
+<li><p><strong>Size</strong>: Ein positiver Integer</p>
+<ul>
+<li><p>Für <em>RECTANGLE</em> bestimmt er die Seitengrösse</p></li>
+<li><p>Für <em>OVAL</em> bestimmt er den Radius</p></li>
+</ul>
+</li>
+<li><p><strong>Color</strong>: char Pointer zu dem vordefinierten char array mit Farbinformationen. Verwenden sie: <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*color;</span></code></p></li>
+</ul>
+<p>Erweitern sie den Code an den markierten Stellen, damit er kompiliert. Per Terminal sollte es möglich sein die Attribute für die Form zu bestimmen, um sie danach angezeigt zu bekommen.</p>
+<p><strong>Bemerkung</strong>: Das Programm verwendet die Math Bibliothek <code class="docutils literal notranslate"><span class="pre">math.h</span></code>. Um das Programm kompilieren zu können, müssen sie das Flag <code class="docutils literal notranslate"><span class="pre">-lm</span></code> verwenden:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gcc -o main -lm main.c
+</pre></div>
+</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -245,22 +264,30 @@
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-left"><p>alle</p></td>
-<td class="text-left"><p>Sie können das funktionierende Programm inklusive funktionierende Tests demonstrieren und erklären.</p></td>
+<td class="text-left"><p>Sie können das funktionierende Programm demonstrieren und erklären.</p></td>
 <td class="text-left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>gibIntWert</p></td>
-<td class="text-left"><p>Eingabe, Bereichsüberprüfung korrekt</p></td>
-<td class="text-left"><p>1</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>istSchaltjahr</p></td>
+<tr class="row-odd"><td class="text-left"><p>Basis Operationen</p></td>
 <td class="text-left"><p>Funktion korrekt</p></td>
-<td class="text-left"><p>1</p></td>
+<td class="text-left"><p>0.5</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>TageProMonat</p></td>
+<tr class="row-even"><td class="text-left"><p>Variablen tauschen</p></td>
 <td class="text-left"><p>Funktion korrekt</p></td>
+<td class="text-left"><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Lower- / Uppercase</p></td>
+<td class="text-left"><p>Funktion korrekt</p></td>
+<td class="text-left"><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Prüfen auf 2-er Potenz</p></td>
+<td class="text-left"><p>Funktion korrekt</p></td>
+<td class="text-left"><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Bit Operationen Rechner</p></td>
+<td class="text-left"><p>Fehlenden Teile ergänzt und lauffähig</p></td>
 <td class="text-left"><p>1</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>Aufgabe 2</p></td>
+<tr class="row-even"><td class="text-left"><p>Einfache Formen</p></td>
 <td class="text-left"><p>Fehlenden Teile ergänzt und lauffähig</p></td>
 <td class="text-left"><p>1</p></td>
 </tr>
@@ -308,10 +335,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#struct-typedef">2. Struct &amp; typedef</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">2.1 Übungen</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#bit-operationen-rechner">1. Bit Operationen Rechner</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#bit-operationen-rechner">2.1 Bit Operationen Rechner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#einfache-formen">2.2 Einfache Formen</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#bewertung">4. Bewertung</a></li>
