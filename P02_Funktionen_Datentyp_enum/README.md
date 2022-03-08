@@ -56,12 +56,7 @@ In diesem Praktikum lernen Sie Funktionen zu definieren und aufzurufen, sowie en
 ___
 ## 3. Aufgaben
 
-```{eval-rst}
-.. figure:: kalender-108_v-ARDFotogalerie.jpg
-  :width: 600px
-  :name: kalender-108_v-ARDFotogalerie
-  :align: center
-```
+![](./kalender-108_v-ARDFotogalerie.jpg)
 
 (Copyright Bild: www.planet-wissen.de)
 
@@ -154,12 +149,8 @@ Beachten Sie die Kommentare im Code für die geforderten Implementierungs-Detail
 Schreiben Sie eine Funktion, welche zu einem Datum den Wochentag berechnet.
 Die Formel wird Georg Glaeser zugeschrieben, möglicherweise angelehnt an eine Formel von Carl Friedrich Gauss.
 
-```{eval-rst}
-.. figure:: Wochentagsberechnung.jpg
-  :width: 600px
-  :name: Wochentagsberechnung
-  :align: center
-```
+![](./Wochentagsberechnung.jpg)
+
 (Quelle: https://de.wikipedia.org/wiki/Wochentagsberechnung)
 
 Hier ist eine für C abgewandelte Variante davon.
