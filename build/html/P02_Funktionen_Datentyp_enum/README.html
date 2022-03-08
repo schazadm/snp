@@ -95,9 +95,7 @@ Beispiel einer Additions-Funktion:</p></li>
 <hr class="docutils" />
 <section id="aufgaben">
 <h2>3. Aufgaben<a class="headerlink" href="#aufgaben" title="Permalink to this headline">¶</a></h2>
-<figure class="align-center" id="kalender-108-v-ardfotogalerie">
-<a class="reference internal image-reference" href="../_images/kalender-108_v-ARDFotogalerie.jpg"><img alt="../_images/kalender-108_v-ARDFotogalerie.jpg" src="../_images/kalender-108_v-ARDFotogalerie.jpg" style="width: 600px;" /></a>
-</figure>
+<p><img alt="" src="../_images/kalender-108_v-ARDFotogalerie.jpg" /></p>
 <p>(Copyright Bild: <a class="reference external" href="http://www.planet-wissen.de">www.planet-wissen.de</a>)</p>
 <section id="aufgabe-1-tage-pro-monat">
 <h3>3.1 Aufgabe 1 Tage pro Monat<a class="headerlink" href="#aufgabe-1-tage-pro-monat" title="Permalink to this headline">¶</a></h3>
@@ -205,9 +203,7 @@ Wenn kein Argument gegeben ist oder wenn das eingegebene Datum nicht gültig ist
 <h4>3.2.2	Teilaufgabe Wochentag Berechnung<a class="headerlink" href="#teilaufgabe-wochentag-berechnung" title="Permalink to this headline">¶</a></h4>
 <p>Schreiben Sie eine Funktion, welche zu einem Datum den Wochentag berechnet.
 Die Formel wird Georg Glaeser zugeschrieben, möglicherweise angelehnt an eine Formel von Carl Friedrich Gauss.</p>
-<figure class="align-center" id="wochentagsberechnung">
-<a class="reference internal image-reference" href="../_images/Wochentagsberechnung.jpg"><img alt="../_images/Wochentagsberechnung.jpg" src="../_images/Wochentagsberechnung.jpg" style="width: 600px;" /></a>
-</figure>
+<p><img alt="" src="../_images/Wochentagsberechnung.jpg" /></p>
 <p>(Quelle: <a class="reference external" href="https://de.wikipedia.org/wiki/Wochentagsberechnung">https://de.wikipedia.org/wiki/Wochentagsberechnung</a>)</p>
 <p>Hier ist eine für C abgewandelte Variante davon.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">weekday</span> <span class="o">=</span> <span class="p">((</span><span class="n">day</span> <span class="o">+</span> <span class="p">(</span><span class="mi">13</span> <span class="o">*</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">c</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
