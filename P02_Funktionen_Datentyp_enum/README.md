@@ -10,10 +10,10 @@ ___
 ## 1. Übersicht
    In diesem Praktikum sind zwei Themen im Fokus: Funktionen und der Datentyp enum.
    
-   Funktionen sind der wesentlichste Bestandteil der C Programmierung welcher eine strukturierte Programmierung ermöglicht:
+   Funktionen sind der wesentlichste Bestandteil der C Programmierung, welcher eine strukturierte Programmierung ermöglicht:
    * Eine Funktion ist ein Teil eines C Codes, der eine spezielle Aufgabe ausführt. Sie kann aus dem Hauptprogramm, oder aus anderen Funktionen, aufgerufen werden.
    * Jede Funktion besitzt einen eindeutigen Namen, eine eindeutige Signatur (Typen und Reihenfolge der Parameter) und einen Rückgabewert (int falls nichts angegeben wird).
-   * Eine Funktion kann Werte aus dem aufrufendem Kontext übernehmen und bei Bedarf einen Wert an den aufrufenden Kontext zurückliefern.
+   * Eine Funktion kann Werte aus dem aufrufenden Kontext übernehmen und bei Bedarf einen Wert an den aufrufenden Kontext zurückliefern.
 Beispiel einer Additions-Funktion: 
 ```
 #include <stdio.h>
@@ -39,7 +39,7 @@ Beispiel eines enum:
 enum Ampeln = {rot =1, gelb, gruen};
 
 int main(void) {
-   enum Ampeln ampel1;
+   Ampeln ampel1;
    if (ampel1 == rot) {...} 
  return 0;
 }
@@ -49,7 +49,7 @@ ___
 ## 2. Lernziele
 
 In diesem Praktikum lernen Sie Funktionen zu definieren und aufzurufen, sowie enum anzuwenden.
-  * Sie können ein Programm schreiben welches aus mehreren Funktionen besteht.
+  * Sie können ein Programm schreiben, welches aus mehreren Funktionen besteht.
   * Sie können Funktionen deklarieren, definieren und aufrufen.
   * Sie können enum Typen definieren und deren Werte bestimmen und abfragen.
 
@@ -66,28 +66,28 @@ ___
 (Copyright Bild: www.planet-wissen.de)
 
 ### 3.1 Aufgabe 1 Tage pro Monat
-In der ersten Aufgabe berechnen Sie die Tag pro Monat einer beliebigen Kombination Monat / Jahr. 
+In der ersten Aufgabe berechnen Sie die Anzahl Tage pro Monat einer beliebigen Kombination Monat / Jahr. 
 Erweitern Sie dazu das Programm um folgende Aspekte: 
 * Bereichsprüfung von Jahr und Monat  
 * Funktion istSchaltjahr, welche berechnet, ob das Jahr eine Schaljahr ist
 * Funktion tageProMonat, welche die Anzahl Tage des gegebenen Monats und Jahres berechnet.
 
 Vorgaben:  
-* Die Funktion istSchaltjahr nimmt einen Integer (jahr) entgegen und gibt 1 im Falle eiens Schltjahres und 0 im andreren Fall zurück
-* Die Funktion tageProMonat nimmt zwei integer (monat und jahr) entgegeben und gibt die Anzahl Tage als Integer zurück
+* Die Funktion istSchaltjahr nimmt einen Integer (jahr) entgegen und gibt 1 im Falle eines Schaltjahres und 0 im andreren Fall zurück
+* Die Funktion tageProMonat nimmt zwei Integer (monat und jahr) entgegen und gibt die Anzahl Tage als Integer zurück
 * Die Jahreszahl, welche den Funktionen übergeben wird, muss überprüft werden und grösser gleich 1599 und kleiner als 10000 sein
 * Der übergebene Monat muss grösser als 0 und kleiner als 13 sein. 
 
 Die Regeln für die Schaltjahrberechnung: 
 * Schaltjahre sind alle Jahre, die durch 4 teilbar sind. 
-* Eine Ausnahme bilden die Jahrhunderte (1600, 1700…). Diese sind keine Schltjahre. 
+* Eine Ausnahme bilden die Jahrhunderte (1600, 1700…). Diese sind keine Schaltjahre. 
 * zu den 100er gibt es ebenfalls Ausnahmen: Diese sind immer Schaltjahre, wenn sie durch 400 teilbar sind
 ... also zum Beispiel 1600 ist eines, nicht jedoch 1700. Weiterführende Details finden Sie unter https://de.wikipedia.org/wiki/Gregorianischer_Kalender 
 
 Gegeben ist die main Funktion des Programms. Ergänzen Sie die enum Definition und die fehlenden Funktionen:
-* gibIntWert: Die Funktion soll einen Int Wert zurückgeben. Der Bereich, wie auch Fehleingaben sollen sollen berücksichtigt werden. (atoi unfd fgets sind hier hilfreich)
-* istSchaltjahr: Die Funktion gibt 1 im Falle eines Schltjahr und o im anderen Falle zurück.
-* tageProMonat: Die Funktion gibt den die Tage des Monats für das definierte Jahr zurück. Verwenden Sie die Switchanweisung , sowie den enum Datentypen
+* gibIntWert: Die Funktion soll einen Int Wert zurückgeben. Der Bereich, wie auch Fehleingaben sollen berücksichtigt werden. (atoi und fgets sind hier hilfreich)
+* istSchaltjahr: Die Funktion gibt 1 im Falle eines Schaltjahrs und o im anderen Falle zurück.
+* tageProMonat: Die Funktion gibt den die Tage des Monats für das definierte Jahr zurück. Verwenden Sie die Switch-Anweisung , sowie den enum Datentypen
 
 ```
 int main (int argc, char *argv[]) {
@@ -129,7 +129,7 @@ Prüfen Sie die Umsetzung beider Teilaufgaben mittels make test.
 Das Argument stellt ein gültiges Datum unseres Gregorianischen Kalenders dar (d.h. ein Datum ab Donnerstag, den 15. Oktober 1582, mit der Gregorianischen Schaltjahr Regel).
 Wenn kein Argument gegeben ist oder wenn das eingegebene Datum nicht gültig ist, soll das Programm einem Hilfetext auf stderr ausgeben und mit EXIT_FAILURE Exit Code terminieren. Wenn ein gültiges Datum erkannt wurde terminiert das Programm mit Exit Code EXIT_SUCCESS.
 ##### 3.2.1.1 Argument Format
-Das Format des Kommando Zeilen Arguments soll yyyy-mm-dd sein, wobei yyyy für das vier-stellige Jahr, mm für einen 1-2-stelligen Monat (1…12) und dd für einen Tag des Monats, begin-nend mit 01. Z.B. 2020-02-29.
+Das Format des Kommando Zeilen Arguments soll yyyy-mm-dd sein, wobei yyyy für das vier-stellige Jahr, mm für einen 1-2-stelligen Monat (1…12) und dd für einen Tag des Monats, beginnend mit 01. Z.B. 2020-02-29.
 ##### 3.2.1.2 Korrektes Datum
 Das Datum muss alle folgenden Bedingungen erfüllen damit es als korrekt erkannt wird:
 * Obergrenze für ein «sinnvolles» Datum ist das Jahr 9999
@@ -145,13 +145,13 @@ Das Datum muss alle folgenden Bedingungen erfüllen damit es als korrekt erkannt
 1. Definieren Sie einen enum Typen mit (typedef) Namen month_t dessen Werte die Englischen 3-Zeichen Abkürzungen der Monate sind, nämlich Jan, Feb, … Dec und stellen Sie sicher dass die Abkürzungen für die uns geläufigen Monatsnummer stehen.
 2.	Definierend Sie einen struct Typen mit (typedef) Namen date_t und den int Elementen year, month, day. Lesen Sie das Argument (falls vorhanden) via sscanf und dem Formatstring "%d-%d-%d" in die drei Elemente einer Date Variable. Siehe dazu die Hinweise im Anhang.
 3.	Für die Berechnung der Monatslänge implementieren Sie die Hilfsfunktion is_leap_year(date_t date) (nach obigen Vorgaben). Der Return Wert 0 bedeutet «Kein Schaltjahr», 1 bedeutet «Schaltjahr».
-4.	Implementieren Sie die Funktion `int get_month_length(date_t date)`. Diese soll für den Monat des Datums die Monatslänge (was dem letzten Tag des Monats ent-spricht) ausgeben – geben Sie 0 für ungültige Monatswerte zurück.
+4.	Implementieren Sie die Funktion `int get_month_length(date_t date)`. Diese soll für den Monat des Datums die Monatslänge (was dem letzten Tag des Monats entspricht) ausgeben – geben Sie 0 für ungültige Monatswerte zurück.
 5.	Schliesslich implementieren Sie die Funktion int is_gregorian_date(date_t date) welche prüft, ob ein gegebenes Datum im Bereich 15. Oktober 1582 und dem Jahr 9999 ist (0 = nein, 1 = ja).
-6.	Implementieren Sie eine Funktion int is_valid_date(date_t date), welche obige Bedingungen für ein gültiges Datum umsetzt. Der Return Wert 0 bedeutet «Kein gültiges Datum», 1 bedeutet «Gültiges Datum». Benutzen Sie für die Prüfung des Datums die `month_t` Werte wo immer möglich und sinnvoll. Verwenden Sie die oben implemen-tierten Hilfsfunktionen.
+6.	Implementieren Sie eine Funktion int is_valid_date(date_t date), welche obige Bedingungen für ein gültiges Datum umsetzt. Der Return Wert 0 bedeutet «Kein gültiges Datum», 1 bedeutet «Gültiges Datum». Benutzen Sie für die Prüfung des Datums die `month_t` Werte wo immer möglich und sinnvoll. Verwenden Sie die oben implementierten Hilfsfunktionen.
 ##### 3.2.1.4 Hinweise
 Beachten Sie die Kommentare im Code für die geforderten Implementierungs-Details.
 #### 3.2.2	Teilaufgabe Wochentag Berechnung
-Schreiben Sie eine Funktion welche zu einem Datum den Wochentag berechnet.
+Schreiben Sie eine Funktion, welche zu einem Datum den Wochentag berechnet.
 Die Formel wird Georg Glaeser zugeschrieben, möglicherweise angelehnt an eine Formel von Carl Friedrich Gauss.
 
 ```{eval-rst}
@@ -171,11 +171,11 @@ a = year - 1 (für month < Mar), ansonsten year
 y = a % 100
 c = a / 100
 ```
-Erweitern sie das Programm so, dass vor dem erfolgreichen Terminieren des Programms fol-gende Zeile (inklusive Zeilenumbruch) ausgegeben wird: yyyy-mm-dd is a Ddd, wobei yyyy für das Jahr, mm für die Nummer des Monats (01…12) und dd für den Tag im Monat (01…). Z.B. 2020-02-29 is a Sat.
+Erweitern sie das Programm so, dass vor dem erfolgreichen Terminieren des Programms folgende Zeile (inklusive Zeilenumbruch) ausgegeben wird: yyyy-mm-dd is a Ddd, wobei yyyy für das Jahr, mm für die Nummer des Monats (01…12) und dd für den Tag im Monat (01…). Z.B. 2020-02-29 is a Sat.
 Vorgaben an die Umsetzung
-1.	Definieren Sie einen enum Typen mit (typedef) Namen weekday_t dessen Werte die Englischen 3-Zeichen Abkürzungen der Tage sind, nämlich Sun, Mon, … Sat und stel-len Sie sicher dass die Abkürzungen für die Werte 0…6 stehen.
-2.	Schreiben Sie eine Funktion weekday_t calculate_weekday(date_t date) nach der Beschreibung der obigen Formel. Das date Argument ist als gültig angenom-men, d.h. es ist ein Programmier-Fehler, wenn das Programm diese Funktion mit einem ungültigen Datum aufruft. Machen Sie dafür als erste Codezeile in der Funktion eine Zu-sicherung (assert(is_valid_date(date));)
-3.	Schreiben Sie eine Funktion void print_weekday(weekday_t day), welche für jeden gülteigen Tag eine Zeile auf stdout schreibt mit den Englischen 3-Zeichen Ab-kürzungen für den Wochentag, z.B. Sonntag: Sun, Montag: Mon, etc. Wenn ein ungülti-ger Wert für day erkannt wird, soll assert(!"day is out-of-range"); aufgeru-fen werden.
+1.	Definieren Sie einen enum Typen mit (typedef) Namen weekday_t dessen Werte die Englischen 3-Zeichen Abkürzungen der Tage sind, nämlich Sun, Mon, … Sat und stellen Sie sicher, dass die Abkürzungen für die Werte 0…6 stehen.
+2.	Schreiben Sie eine Funktion weekday_t calculate_weekday(date_t date) nach der Beschreibung der obigen Formel. Das date Argument ist als gültig angenommen, d.h. es ist ein Programmier-Fehler, wenn das Programm diese Funktion mit einem ungültigen Datum aufruft. Machen Sie dafür als erste Codezeile in der Funktion eine Zu-sicherung (assert(is_valid_date(date));)
+3.	Schreiben Sie eine Funktion void print_weekday(weekday_t day), welche für jeden gülteigen Tag eine Zeile auf stdout schreibt mit den Englischen 3-Zeichen Ab-kürzungen für den Wochentag, z.B. Sonntag: Sun, Montag: Mon, etc. Wenn ein ungültiger Wert für day erkannt wird, soll assert(!"day is out-of-range"); aufgerufen werden.
 Hinweise
 •	Für interessierte, siehe: https://de.wikipedia.org/wiki/Wochentagsberechnung
 
@@ -194,7 +194,7 @@ Die gegebenenfalls gestellten Theorieaufgaben und der funktionierende Programmco
 ___
 ## 5. Anhang
 
-### 5.1 Sprach Element	
+### 5.1 Sprachelemente	
 
 ```int main(int argc, char *argv[]) {
   ...
