@@ -204,7 +204,7 @@ Erweitern sie den Code an den markierten Stellen, damit er kompiliert. Per Termi
 
 **Bemerkung**: Das Programm verwendet die Math Bibliothek `math.h`. Um das Programm kompilieren zu können, müssen sie das Flag `-lm` verwenden:
 
-    gcc -o main -lm main.c
+    gcc -o main main.c -lm
 
 ___
 ## 4. Bewertung
