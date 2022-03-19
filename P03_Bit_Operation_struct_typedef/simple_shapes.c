@@ -8,12 +8,21 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-/* 
+typedef enum {
+    OVAL, RECTANGLE
+} Shape;
+
+/*
 Students: Create a new type "Graphic" that can store:
 - shape (OVAL, RECTANGLE) -> create a new enum for this type
 - size
 - color
 */
+typedef struct {
+    Shape shape;
+    unsigned int size;
+    char *color;
+} Graphic;
 
 
 void paint(Graphic graphic) {
@@ -47,14 +56,23 @@ int main() {
         printf("Geben Sie die gewünschte Form an [OVAL=0 | RECTANGLE=1]:");
         scanf("%d", &input);
         // Students: store the input in graphic
+        graphic.shape = (input) ? RECTANGLE: OVAL;
 
         printf("Geben Sie die gewünschte Grösse an:");
         scanf("%u", &input);
         // Students: store the input in graphic
+        graphic.size = input;
 
         printf("Geben Sie die gewünschte Farb an [RED=0 | GREEN=1 | YELLOW=2]:");
         scanf("%d", &input);
         // Students: store the input in graphic
+        if (input == 0) {
+            graphic.color = RED;
+        } else if(input == 1) {
+            graphic.color = GRN;
+        }  else if(input == 2) {
+            graphic.color = YEL;
+        }
         
         paint(graphic);
         

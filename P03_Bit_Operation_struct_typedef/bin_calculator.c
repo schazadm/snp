@@ -33,6 +33,16 @@ unsigned int parse_operand(char operand_str[]) {
 
 void print_binary(unsigned int value) {
     // Students: Print a single number as a binary string
+    unsigned int check = 0x80000000;
+    
+    for(int i = 0; i < bits_per_int(); i++){
+        int d = ((value & check) > 0) ? 1 : 0;
+        check = check >> 1;
+        printf("%d", d);
+        if((i + 1) % 8 == 0 && i != bits_per_int() - 1){
+            putchar('\'');
+        }
+    }
 }
 
 void print_bit_operation_bin(Expression expression, unsigned int result) {
@@ -45,6 +55,7 @@ void print_bit_operation_bin(Expression expression, unsigned int result) {
     -----------------------------------
     00000000'00000000'00000000'00000011
     */
+    printf("\n");
     printf("Bin:\n");
     print_binary(expression.operand_1);
     printf("\n");
@@ -79,44 +90,52 @@ void print_bit_operation_dec(Expression expression, unsigned int result) {
 unsigned int bit_operation(Expression expression) {
     // Students: Do the actual bit operation and return the result
     int result;
-    switch (expression.operator){
-        case '&': result = expression.operand_1 & expression.operand_2;
-        break;
-        case '|': result = expression.operand_1 | expression.operand_2;
-        break;
-        case '^': result = expression.operand_1 ^ expression.operand_2;
-        break;
-        case '<': result = expression.operand_1 << expression.operand_2;
-        break;
-        case '>': result = expression.operand_1 >> expression.operand_2;
-        break;
-        default: result = -1;
-                fprintf(stderr, "Wrong operand given!\n");
+    switch (expression.operation){
+        case '&':
+            result = expression.operand_1 & expression.operand_2;
+            break;
+        case '|':
+            result = expression.operand_1 | expression.operand_2;
+            break;
+        case '^':
+            result = expression.operand_1 ^ expression.operand_2;
+            break;
+        case '<':
+            result = expression.operand_1 << expression.operand_2;
+            break;
+        case '>':
+            result = expression.operand_1 >> expression.operand_2;
+            break;
+        default:
+            result = 0;
+            fprintf(stderr, "Wrong operand given!\n");
     }
     return result;
 }
 
 int main(){
-    char operand1_str[10];
-    char operand2_str[10];
+    char operand_1_str[10];
+    char operand_2_str[10];
     char operation;
 
-    unsigned int operand1, operand2;
+    unsigned int operand_1, operand_2;
 
     do {
-        printf("Geben sie die Bit-Operation ein:\n");
+        printf("Geben sie die Bit-Operation ein: ");
 
-        scanf("%s %c %s", operand1_str, &operation, operand2_str);
+        scanf("%s %c %s", operand_1_str, &operation, operand_2_str);
         
-        operand1 = parse_operand(operand1_str);
-        operand2 = parse_operand(operand2_str);
+        operand_1 = parse_operand(operand_1_str);
+        operand_2 = parse_operand(operand_2_str);
 
         // Students: Create an expression
-        Expression expression = {operand1, operand2, operation} ;
+        Expression expression = {operand_1, operand_2, operation} ;
 
         unsigned int result = bit_operation(expression);
         print_bit_operation_bin(expression, result);
+        printf("\n");
         print_bit_operation_hex(expression, result);
+        printf("\n");
         print_bit_operation_dec(expression, result);
 
         while(getchar() != '\n');
