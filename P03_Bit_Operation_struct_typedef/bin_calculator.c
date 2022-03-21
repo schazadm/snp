@@ -8,7 +8,7 @@ typedef struct {
     Students: The Expression struct should hold the two operands and
     the operation (use a char for the operation)
     */
-    int operand_1, operand_2;
+    unsigned int operand_1, operand_2;
     char operation;
 } Expression;
 
@@ -114,8 +114,8 @@ unsigned int bit_operation(Expression expression) {
 }
 
 int main(){
-    char operand_1_str[10];
-    char operand_2_str[10];
+    char operand_1_str[11];
+    char operand_2_str[11];
     char operation;
 
     unsigned int operand_1, operand_2;
