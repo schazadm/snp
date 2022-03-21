@@ -31,15 +31,15 @@ int main(void)
 		printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n\n");
 
 		int word;
-        int a;
-        int b;
-        int c;
+		int a;
+		int b;
+		int c;
 
 		do {
 			printf("Seite a: ");
 			word = getInt(MAX_NUMBER);
 		} while ((word < 0) && (word != READ_ERROR));
-		
+
 		if (word >= 0)
 			a = word;
 		else
@@ -49,7 +49,7 @@ int main(void)
 			printf("Seite b: ");
 			word = getInt(MAX_NUMBER);
 		} while ((word < 0) && (word != READ_ERROR));
-		
+
 		if (word >= 0)
 			b = word;
 		else
@@ -59,7 +59,7 @@ int main(void)
 			printf("Seite c: ");
 			word = getInt(MAX_NUMBER);
 		} while ((word < 0) && (word != READ_ERROR));
-		
+
 		if (word >= 0)
 			c = word;
 		else
@@ -69,12 +69,11 @@ int main(void)
 			printf("-> Dreieck %d-%d-%d ist rechtwinklig\n", a, b, c);
 		else
 			printf("-> Dreieck %d-%d-%d ist nicht rechtwinklig\n", a, b, c);
-			
+
 		printf("\n\n");
 	}
 	printf("\n\nbye bye\n\n");
 	// end students to add code
-	
+
 	return EXIT_SUCCESS;
 }
-
