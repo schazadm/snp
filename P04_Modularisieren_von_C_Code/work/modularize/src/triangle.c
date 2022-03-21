@@ -28,7 +28,7 @@ int main(void)
 {
 	// begin students to add code for task 4.1
 	while (1) {
-		printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n");
+		printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n\n");
 
 		int word = 0;
 		int a = 0;
@@ -36,7 +36,7 @@ int main(void)
 		int c = 0;
 
 		do {
-			printf("Seite a: \n");
+			printf("Seite a: ");
 			word = getInt(MAX_NUMBER);
 		} while ((word < 0) && (word != READ_ERROR));
 		
@@ -46,7 +46,7 @@ int main(void)
 			return EXIT_FAILURE;
 
 		do {
-			printf("Seite b: \n");
+			printf("Seite b: ");
 			word = getInt(MAX_NUMBER);
 		} while ((word < 0) && (word != READ_ERROR));
 		
@@ -56,7 +56,7 @@ int main(void)
 			return EXIT_FAILURE;
 
 		do {
-			printf("Seite c: \n");
+			printf("Seite c: ");
 			word = getInt(MAX_NUMBER);
 		} while ((word < 0) && (word != READ_ERROR));
 		
@@ -66,9 +66,9 @@ int main(void)
 			return EXIT_FAILURE;
 
 		if (rectangular(a, b, c) == 1)
-			printf("-> Dreieck %d - %d - %d ist rechtwinklig\n", a, b, c);
+			printf("-> Dreieck %d-%d-%d ist rechtwinklig\n", a, b, c);
 		else
-			printf("-> Dreieck %d - %d - %d ist nicht rechtwinklig\n", a, b, c);
+			printf("-> Dreieck %d-%d-%d ist nicht rechtwinklig\n", a, b, c);
 			
 		printf("\n\n");
 	}

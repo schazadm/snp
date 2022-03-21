@@ -19,16 +19,16 @@ int getInt(int maxResult) {
 	int result = 0;
 	// read line: up to EOL or EOF (i.e. error while reading)
 	int bytes = 0;
-	int input;
-	scanf("%d", &input);
+	char input;
+	scanf("%c", &input);
 	while ((input != EOL) && (input != EOF)) { // read whole line
 		if (bytes < BUFFERSIZE) { // only buffer first n characters
-			buffer[bytes] = (char)input;
+			buffer[bytes] = input;
 			bytes++;
 		} else {
 			result = PARSE_ERROR; // exceed buffer size, continue read line
 		}
-		scanf("%d", &input);
+		scanf("%c", &input);
 	}
 	if (input == EOF) {
 		result = READ_ERROR;
