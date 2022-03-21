@@ -30,10 +30,10 @@ int main(void)
 	while (1) {
 		printf("\nDreiecksbestimmung (CTRL-C: Abbruch)\n\n");
 
-		int word = 0;
-		int a = 0;
-		int b = 0;
-		int c = 0;
+		int word;
+        int a;
+        int b;
+        int c;
 
 		do {
 			printf("Seite a: ");
@@ -43,7 +43,7 @@ int main(void)
 		if (word >= 0)
 			a = word;
 		else
-			return EXIT_FAILURE;
+			break;
 
 		do {
 			printf("Seite b: ");
@@ -53,7 +53,7 @@ int main(void)
 		if (word >= 0)
 			b = word;
 		else
-			return EXIT_FAILURE;
+			break;
 
 		do {
 			printf("Seite c: ");
@@ -63,7 +63,7 @@ int main(void)
 		if (word >= 0)
 			c = word;
 		else
-			return EXIT_FAILURE;
+			break;
 
 		if (rectangular(a, b, c) == 1)
 			printf("-> Dreieck %d-%d-%d ist rechtwinklig\n", a, b, c);
