@@ -34,9 +34,9 @@ int getInt(int maxResult) {
 	}
 	// check for numbers: skip leading and trailing spaces
 	// (i.e. this includes all control chars below the space ASCII code)
-	int pos = 0;
+	        int pos = 0;
 	while((pos < bytes) && (buffer[pos] <= ASCII_SPACE)) pos++; // skip SP
-	int posOfFirstDigit = pos;
+	    int posOfFirstDigit = pos;
 	int posOfLastDigit = NO_POS;
 	while ((pos < bytes)
 			&& (buffer[pos] >= ASCII_DIGIT_0)
