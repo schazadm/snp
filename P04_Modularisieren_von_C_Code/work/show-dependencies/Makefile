@@ -48,7 +48,7 @@ dep: $(FULLTARGET) $(DEPFILES)
 # action: call $(TARGET) $(@:.dot=) <$< >$@ || $(RM) $@
 # BEGIN-STUDENTS-TO-ADD-CODE
 %.dot: %.dep
-	call $(TARGET) $(@:.dot=) <$< >$@ || $(RM) $@
+	$(TARGET) $(@:.dot=) <$< >$@ || $(RM) $@
 
 # BEGIN-STUDENTS-TO-ADD-CODE
 
