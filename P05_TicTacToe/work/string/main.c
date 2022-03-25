@@ -80,7 +80,7 @@ void sortArray(char array[MAX_NUMBER_OF_WORDS][MAX_NUMBER_OF_CHARS], int rowCoun
 }
 
 int main() {
-	char word[MAX_NUMBER_OF_WORDS][MAX_NUMBER_OF_CHARS];
+	char word[MAX_NUMBER_OF_WORDS][MAX_NUMBER_OF_CHARS] = {'\0'};
 	int wordCounter = 0;
 
 	printf("Enter words: ");
