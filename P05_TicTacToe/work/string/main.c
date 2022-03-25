@@ -6,63 +6,111 @@
 #define MAX_NUMBER_OF_WORDS 10
 #define MAX_NUMBER_OF_CHARS 21
 
-void readWord(char *arrayPtr);
-
-void formatToUpperCase(char *arrayPtr);
-
-void sortArray(char *arrayPtr, int numberOfWords);
-
-int main() {
-	char word[MAX_NUMBER_OF_WORDS][MAX_NUMBER_OF_CHARS];
-	int amountOfGivenWords = 0;
-	printf("Enter words: ");
-	for (int i = 0; i < MAX_NUMBER_OF_WORDS; i++) {
-		readWord(word[i]);
-		amountOfGivenWords++;
-		formatToUpperCase(word[i]);
-		if (strlen(word[i]) == 3 && word[i][0] == 'Z' && word[i][1] == 'Z' && word[i][2] == 'Z')
-			break;
-	}
-	// sortArray((char *) word, amountOfGivenWords);
-
-	char temp[MAX_NUMBER_OF_CHARS];
-	for (int i = 0; i <= amountOfGivenWords; i++) {
-	    for (int j = i + 1; j <= amountOfGivenWords; j++) {
-	        if (strcmp(word[i], word[j]) > 0) {
-	            strcpy(temp, word[i]);
-	            strcpy(word[i], word[j]);
-	            strcpy(word[j], temp);
-	        }
-	    }
-	}
-
-	printf("Print of given words: \n");
-	for (int i = 0; i < amountOfGivenWords; i++) {
-		printf("%s\n", word[i]);
-	}
-	return EXIT_SUCCESS;
-}
-
+/**
+ * Reads an user string input of max length 20 chars
+ *
+ * @param arrayPtr Pointer to where it should save the input
+ */
 void readWord(char *arrayPtr) {
+	// read char by char
+	/*
+	   const char SPACE = ' ';
+	   const char TAB = '\t';
+	   const char EOL = '\n';
+	   int charCount = 0;
+	   char character = (char) getchar();
+	   while (charCount < MAX_NUMBER_OF_CHARS) {
+	   if (character == SPACE || character == EOL || character == TAB)
+	   break;
+	   arrayPtr[charCount] = character;
+	   charCount++;
+	   character = (char) getchar();
+	   }
+	   */
+	   
+	// let scanf read string
 	scanf("%20s", arrayPtr);
 }
 
+/**
+ * Receives a pointer to an array and transforms every element into an upper-case
+ *
+ * @param arrayPtr Pointer of array to format
+ */
 void formatToUpperCase(char *arrayPtr) {
 	for (int i = 0; i < strlen(arrayPtr); i++) {
 		arrayPtr[i] = (char) toupper(arrayPtr[i]);
 	}
 }
 
-void sortArray(char *arrayPtr, int numberOfWords) {
+/**
+ * Receives a 2D-Array and investigates its values with strcmp and returns 1 if a string already exists
+ *
+ * @param array Array to investigate
+ * @param rowCount Amount of rows which are filled
+ * @return 0 if not exist, 1 if exist
+ */
+int wordAlreadyExists(char array[MAX_NUMBER_OF_WORDS][MAX_NUMBER_OF_CHARS], int rowCount) {
+	for (int i = 0; i < rowCount; i++) {
+		for (int j = i + 1; j <= rowCount; j++) {
+			if (strcmp(array[i], array[j]) == 0)
+				return 1;
+		}
+	}
+	return 0;
+}
+
+/**
+ * Receives a 2D-Array and sorts its values with strcmp
+ *
+ * @param array Array to sort
+ * @param rowCount Amount of rows which are filled
+ */
+void sortArray(char array[MAX_NUMBER_OF_WORDS][MAX_NUMBER_OF_CHARS], int rowCount) {
 	char temp[MAX_NUMBER_OF_CHARS];
-	for (int i = 0; i <= numberOfWords; i++) {
-		for (int j = i + 1; j <= numberOfWords; j++) {
-			if (strcmp(&arrayPtr[i], &arrayPtr[j]) > 0) {
-				strcpy(temp, &arrayPtr[i]);
-				strcpy(&arrayPtr[i], &arrayPtr[j]);
-				strcpy(&arrayPtr[j], temp);
+	for (int i = 0; i < rowCount; i++) {
+		for (int j = i + 1; j <= rowCount; j++) {
+			if (strcmp(array[i], array[j]) > 0) {
+				strcpy(temp, array[i]);
+				strcpy(array[i], array[j]);
+				strcpy(array[j], temp);
 			}
 		}
 	}
 }
+
+int main() {
+	char word[MAX_NUMBER_OF_WORDS][MAX_NUMBER_OF_CHARS];
+	int wordCounter = 0;
+
+	printf("Enter words: ");
+
+	do {
+		readWord(word[wordCounter]);
+		formatToUpperCase(word[wordCounter]);
+
+		// break condition - if ZZZ was the last word then break
+		if (strlen(word[wordCounter]) == 3
+				&& word[wordCounter][0] == 'Z'
+				&& word[wordCounter][1] == 'Z'
+				&& word[wordCounter][2] == 'Z')
+			break;
+			
+		// continue condition - if a word is already in the array skip
+		if (wordAlreadyExists(word, wordCounter))
+			continue;
+
+		wordCounter++;
+	} while (wordCounter < MAX_NUMBER_OF_WORDS);
+
+	sortArray(word, wordCounter);
+
+	printf("\nPrint of given words: \n");
+	for (int i = 0; i < wordCounter; i++) {
+		printf("%s\n", word[i]);
+	}
+
+	return EXIT_SUCCESS;
+}
+
 
