@@ -14,6 +14,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef enum {
+	I, R, S, C, E
+} valid_input;
+
+
+int readInput() {
+
+}
+
 /**
  * @brief Main entry point.
  * @param[in] argc  The size of the argv array.
@@ -23,7 +32,8 @@
 int main(int argc, char* argv[])
 {
 	// BEGIN-STUDENTS-TO-ADD-CODE
-    
+
 	// END-STUDENTS-TO-ADD-CODE
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
+
