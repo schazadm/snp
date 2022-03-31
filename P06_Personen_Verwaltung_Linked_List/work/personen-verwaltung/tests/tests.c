@@ -55,12 +55,17 @@ static void test_person_compare(void)
 {
 	// BEGIN-STUDENTS-TO-ADD-CODE
 	// arrange
-
+    person_t a = { "a", "a", 1 };
+	person_t b = { "a", "a", 2 };
 	// act
 	CU_FAIL("missing test");
 	
 	// assert
+	CU_ASSERT_TRUE(person_compare(&a, &a) == 0);
+	CU_ASSERT_TRUE(person_compare(&a, &b) < 0);
 	
+	CU_ASSERT_TRUE(person_compare(&b, &a) > 0);
+	CU_ASSERT_TRUE(person_compare(&b, &b) == 0);
 	// END-STUDENTS-TO-ADD-CODE
 }
 
@@ -68,7 +73,8 @@ static void test_list_insert(void)
 {
 	// BEGIN-STUDENTS-TO-ADD-CODE
 	// arrange
-
+    const node_t *anchor = list_init();
+	CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
 	// act
 	CU_FAIL("missing test");
 	
@@ -81,7 +87,7 @@ static void test_list_remove(void)
 {
 	// BEGIN-STUDENTS-TO-ADD-CODE
 	// arrange
-
+    
 	// act
 	CU_FAIL("missing test");
 	
