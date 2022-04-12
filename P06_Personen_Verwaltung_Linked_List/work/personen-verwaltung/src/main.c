@@ -34,10 +34,11 @@ int main(int argc, char* argv[])
 	list_init();
 	person_t p;
 	int loop = 1;
-
+	printf("I(nsert), R(emove), S(how), C(lear), E(nd)\n\n");
 	while(loop) {
-		printf("I(nsert), R(emove), S(how), C(lear), E(nd)\n");
+		printf("Input: ");
 		int input = readInput();
+		
 		switch(input) {
 			case 'I':
 			case 'i':
@@ -63,6 +64,9 @@ int main(int argc, char* argv[])
 			case 'E':
 			case 'e':
 				loop = 0;
+				break;
+			case ' ': 
+			case '\n':
 				break;
 			default:
 				printf("Unknown command: %c\n", input);

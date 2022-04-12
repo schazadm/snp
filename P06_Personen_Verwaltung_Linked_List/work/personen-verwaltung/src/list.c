@@ -95,7 +95,8 @@ void list_show(void)
 {
 	node_t *n = &anchor;
 	do {
-		if (!is_anchor(n)) printf("%20s %20s %u\n", n->content.name, n->content.first_name, n->content.age);
+		if (!is_anchor(n))
+			printf("%s\t%s\t%u\n", n->content.name, n->content.first_name, n->content.age);
 		n = n->next;
 	} while(!is_anchor(n));
 }

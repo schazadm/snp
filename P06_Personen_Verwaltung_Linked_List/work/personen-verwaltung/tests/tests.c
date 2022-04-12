@@ -19,6 +19,9 @@
 #include <CUnit/Basic.h>
 #include "test_utils.h"
 
+#include "person.h"
+#include "list.h"
+
 #ifndef TARGET // must be given by the make file --> see test target
 #error missing TARGET define
 #endif
@@ -58,7 +61,6 @@ static void test_person_compare(void)
     person_t a = { "a", "a", 1 };
 	person_t b = { "a", "a", 2 };
 	// act
-	CU_FAIL("missing test");
 	
 	// assert
 	CU_ASSERT_TRUE(person_compare(&a, &a) == 0);
@@ -73,8 +75,8 @@ static void test_list_insert(void)
 {
 	// BEGIN-STUDENTS-TO-ADD-CODE
 	// arrange
-    const node_t *anchor = list_init();
-	CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
+    // const node_t *anchor = list_init();
+	// CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
 	// act
 	CU_FAIL("missing test");
 	
