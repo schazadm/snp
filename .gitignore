@@ -1,6 +1,7 @@
 # dir
 bin/
 tests/
+.idea/
 
 # files
 *.d

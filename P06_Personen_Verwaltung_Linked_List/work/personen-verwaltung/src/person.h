@@ -4,9 +4,9 @@
 #define NAME_LEN 20
 
 typedef struct {
-	char name[NAME_LEN];
-	char first_name[NAME_LEN];
-	unsigned int age;
+    char name[NAME_LEN];
+    char first_name[NAME_LEN];
+    unsigned int age;
 } person_t;
 
 
@@ -23,5 +23,7 @@ typedef struct {
 int person_compare(const person_t *a, const person_t *b);
 
 int person_read(person_t *p);
+
+void clear_buffer(void);
 
 #endif
