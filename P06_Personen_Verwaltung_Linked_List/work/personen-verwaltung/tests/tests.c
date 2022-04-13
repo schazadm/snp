@@ -39,89 +39,97 @@
 #define TRACE_INDENT "\n                " ///< allow for better stdout formatting in case of error
 
 // setup & cleanup
-static int setup(void)
-{
+static int setup(void) {
     remove_file_if_exists(OUTFILE);
     remove_file_if_exists(ERRFILE);
     return 0; // success
 }
 
-static int teardown(void)
-{
+static int teardown(void) {
     // Do nothing.
     // Especially: do not remove result files - they are removed in int setup(void) *before* running a test.
     return 0; // success
 }
 
 // tests
-static void test_person_compare(void)
-{
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
-    person_t a = { "a", "a", 1 };
-	person_t b = { "a", "a", 2 };
-	// act
-	
-	// assert
-	CU_ASSERT_TRUE(person_compare(&a, &a) == 0);
-	CU_ASSERT_TRUE(person_compare(&a, &b) < 0);
-	
-	CU_ASSERT_TRUE(person_compare(&b, &a) > 0);
-	CU_ASSERT_TRUE(person_compare(&b, &b) == 0);
-	// END-STUDENTS-TO-ADD-CODE
+static void test_person_compare(void) {
+    // BEGIN-STUDENTS-TO-ADD-CODE
+    // init
+    person_t a = {"a", "a", 1};
+    person_t b = {"a", "a", 2};
+    // compare
+    CU_ASSERT_TRUE(person_compare(&a, &a) == 0);
+    CU_ASSERT_TRUE(person_compare(&a, &b) < 0);
+    CU_ASSERT_TRUE(person_compare(&b, &a) > 0);
+    CU_ASSERT_TRUE(person_compare(&b, &b) == 0);
+    // END-STUDENTS-TO-ADD-CODE
 }
 
-static void test_list_insert(void)
-{
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
-    // const node_t *anchor = list_init();
-	// CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
-	// act
-	CU_FAIL("missing test");
-	
-	// assert
-	
-	// END-STUDENTS-TO-ADD-CODE
+static void test_list_insert(void) {
+    // BEGIN-STUDENTS-TO-ADD-CODE
+    // init
+    const node_t *anchor = list_init();
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
+    // first insert
+    person_t p1 = {"a", "b", 123};
+    CU_ASSERT_TRUE(list_insert(&p1));
+    CU_ASSERT_PTR_NOT_EQUAL(anchor, anchor->next);
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next->next);
+    CU_ASSERT_TRUE(person_compare(&(anchor->next->content), &p1) == 0);
+    // second insert
+    person_t p2 = {"a", "b", 124};
+    CU_ASSERT_TRUE(list_insert(&p2));
+    CU_ASSERT_PTR_NOT_EQUAL(anchor, anchor->next);
+    CU_ASSERT_PTR_NOT_EQUAL(anchor, anchor->next->next);
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next->next->next);
+    CU_ASSERT_TRUE(person_compare(&(anchor->next->content), &p1) == 0);
+    CU_ASSERT_TRUE(person_compare(&(anchor->next->next->content), &p2) == 0);
+    // END-STUDENTS-TO-ADD-CODE
 }
 
-static void test_list_remove(void)
-{
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
-    
-	// act
-	CU_FAIL("missing test");
-	
-	// assert
-	
-	// END-STUDENTS-TO-ADD-CODE
+static void test_list_remove(void) {
+    // BEGIN-STUDENTS-TO-ADD-CODE
+    // init
+    const node_t *anchor = list_init();
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
+    // insert
+    person_t p1 = {"a", "b", 123};
+    CU_ASSERT_TRUE(list_insert(&p1));
+    CU_ASSERT_PTR_NOT_EQUAL(anchor, anchor->next);
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next->next);
+    CU_ASSERT_TRUE(person_compare(&(anchor->next->content), &p1) == 0);
+    // remove same
+    CU_ASSERT_TRUE_FATAL(list_remove(&p1));
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
+    // END-STUDENTS-TO-ADD-CODE
 }
 
-static void test_list_clear(void)
-{
-	// BEGIN-STUDENTS-TO-ADD-CODE
-	// arrange
-
-	// act
-	CU_FAIL("missing test");
-	
-	// assert
-	
-	// END-STUDENTS-TO-ADD-CODE
+static void test_list_clear(void) {
+    // BEGIN-STUDENTS-TO-ADD-CODE
+    // init
+    // arrange
+    const node_t *anchor = list_init();
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
+    // empty the list
+    list_clear();
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
+    // insert one and clear after
+    person_t p1 = {"a", "b", 123};
+    CU_ASSERT_TRUE(list_insert(&p1));
+    CU_ASSERT_PTR_NOT_EQUAL(anchor, anchor->next);
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next->next);
+    CU_ASSERT_TRUE(person_compare(&(anchor->next->content), &p1) == 0);
+    list_clear();
+    CU_ASSERT_PTR_EQUAL(anchor, anchor->next);
+    // END-STUDENTS-TO-ADD-CODE
 }
 
 /**
  * @brief Registers and runs the tests.
  * @returns success (0) or one of the CU_ErrorCode (>0)
  */
-int main(void)
-{
+int main(void) {
     // setup, run, teardown
-    TestMainBasic("lab test", setup, teardown
-                  , test_person_compare
-                  , test_list_insert
-                  , test_list_remove
-                  , test_list_clear
-                  );
+    TestMainBasic("lab test", setup, teardown, test_person_compare, test_list_insert, test_list_remove, test_list_clear
+    );
 }
